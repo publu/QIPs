@@ -8,8 +8,9 @@ The QIPs page is a dedicated platform for the QiDAO community to propose, discus
 2. **Discussion:** Open forum for community feedback and deliberation.
 3. **Voting:** Community vote to approve or reject the proposal.
 4. **Accepted:** Approved proposals awaiting implementation.
-5. **Implemented:** Successfully integrated proposals into the QiDAO protocol.
-6. **Rejected:** Proposals that were not approved by the community.
+5. **Queued:** In Progress of being implemented
+6. **Implemented:** Successfully integrated proposals into the QiDAO protocol.
+7. **Rejected:** Proposals that were not approved by the community.
 
 ## Pages Required:
 1. **Homepage:**
