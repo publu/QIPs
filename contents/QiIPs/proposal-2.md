@@ -2,8 +2,9 @@
 qip: 1
 network: Ethereum & Optimism
 title: Qips Purpose and Guidelines
+shortDescription: Qips stands for QiDao Improvement Proposal, it has been adapted from the EIP (Ethereum Improvement Proposal). The purpose of this process is to ensure changes to QiDao are transparent and well governed. An Qips is a design document providing information to the QiDao community about a proposed change to the system. The author is responsible for building consensus within the community and documenting dissenting opinions.
 status: Implemented
-author: Publu (@publu), Tekrajs (@tekrajs)
+author: Publu (@publu)
 created: 2019-06-10T00:00:00.000Z
 proposal: >-
   https://snapshot.org/#/qidao.eth/proposal/0x62ae5f092aa1d1469604d5c33c4795b7db2683fcf53444c15a1cdab85cfd8044

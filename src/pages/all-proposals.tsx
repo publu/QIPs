@@ -69,6 +69,7 @@ export const query = graphql`
                     frontmatter {
                         qip
                         title
+                        shortDescription
                         author
                         network
                         type
