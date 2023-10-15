@@ -1,49 +1,29 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby Minimal TypeScript Starter
-</h1>
+# QIPs (QiDAO Improvement Proposals) Page ReadMe
 
-## 🚀 Quick start
+## Description:
+The QIPs page is a dedicated platform for the QiDAO community to propose, discuss, and track the evolution of various protocol improvements. It aims to foster transparency and collaborative decision-making within the QiDAO ecosystem.
 
-1.  **Create a Gatsby site.**
+## Stages:
+1. **Draft:** Initial proposal submission for community review.
+2. **Discussion:** Open forum for community feedback and deliberation.
+3. **Voting:** Community vote to approve or reject the proposal.
+4. **Accepted:** Approved proposals awaiting implementation.
+5. **Queued:** In Progress of being implemented
+6. **Implemented:** Successfully integrated proposals into the QiDAO protocol.
+7. **Rejected:** Proposals that were not approved by the community.
 
-    Use the Gatsby CLI to create a new site, specifying the minimal TypeScript starter.
-
-    ```shell
-    # create a new Gatsby site using the minimal TypeScript starter
-    npm init gatsby -- -ts
-    ```
-
-2.  **Start developing.**
-
-    Navigate into your new site’s directory and start it up.
-
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
-
-3.  **Open the code and start customizing!**
-
-    Your site is now running at http://localhost:8000!
-
-    Edit `src/pages/index.tsx` to see your site update in real-time!
-
-4.  **Learn more**
-
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Tutorials](https://www.gatsbyjs.com/docs/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Guides](https://www.gatsbyjs.com/docs/how-to/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-
-## 🚀 Quick start (Netlify)
-
-Deploy this starter with one click on [Netlify](https://app.netlify.com/signup):
-
-[<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-minimal-ts)
+## Pages Required:
+1. **Homepage:**
+   - Overview of QIPs, recent proposals, and a guide on how to contribute.
+   
+2. **All Proposals Page:**
+   - A comprehensive list of proposals with filtering and sorting options.
+   
+3. **Individual Proposal Pages:**
+   - Detailed view of each proposal, its status, discussion threads, and voting results.
+   
+4. **Contribution Guide Page:**
+   - Step-by-step guide on how to submit new proposals and participate in discussions.
+   
+5. **FAQ/Help Page:**
+   - Assistance for common queries and guidelines on community conduct.
