@@ -15,7 +15,7 @@
 }
 
 @layer base {
-    .content .ol a {
+    .content ol a {
         @apply text-blue-900;
     }
 }
