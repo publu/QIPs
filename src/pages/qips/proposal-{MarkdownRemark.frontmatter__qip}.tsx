@@ -15,18 +15,25 @@ const Template: React.FC<Props> = ({ data }) => {
     const githubLink = getGithubLink(fileAbsolutePath);
     return (
         <Layout>
-            <div className="flex justify-center mt-30 m-10 mt-[7rem]">
-                <div className="justify-center md:w-[70%]">
-                    
-                    <div>
-                        <FrontmatterTable frontmatter={frontmatter} />
-                    </div>
+            <div className="container max-w-full">
+                <div className="content mt-30 overflow-y-auto h-screen flex justify-center items-start">
+                    <div
+                        id="content-center"
+                        className="relative w-full pl-0 lg:w-3/4 lg:pl-5 mt-20"
+                    >
+                        <div className="">
+                            
+                            <div className='flex justify-center sm:m-0 m-3'>
+                                <FrontmatterTable frontmatter={frontmatter} />
+                            </div>
 
-                    <div className="markdown-content mt-3">
-                        <div
-                            className="prose max-w-none"
-                            dangerouslySetInnerHTML={{ __html: html }}
-                        />
+                            <div className="markdown-content mt-3">
+                                <div
+                                    className="prose max-w-none"
+                                    dangerouslySetInnerHTML={{ __html: html }}
+                                />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

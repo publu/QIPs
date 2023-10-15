@@ -47,26 +47,26 @@ const Home: React.FC = () => {
                                     .
                                 </li>
                                 <li>
-                                    Fork the repository by visiting the SIPs{' '}
+                                    Fork the repository by visiting the QIPs{' '}
                                     <a href="https://github.com//publu/QIPs">
                                         repo
                                     </a>{' '}
                                     and pressing "Fork" in the top right.
                                 </li>
                                 <li>
-                                    Add your SIP to your fork of the repository.
+                                    Add your QIP to your fork of the repository.
                                     There is a{' '}
-                                    <a href="https://github.com//publu/QIPs/blob/master/sip-x.md">
+                                    <a href="https://github.com//publu/QIPs/blob/master/qip-x.md">
                                         template Proposal here
                                     </a>{' '}
                                     and a{' '}
-                                    <a href="https://github.com//publu/QIPs/blob/master/stp-x.md">
-                                        template STP here
+                                    <a href="https://github.com//publu/QIPs/blob/master/qtp-x.md">
+                                        template QTP here
                                     </a>
                                     .
                                 </li>
                                 <li>
-                                    Submit a Pull Request to Synthetix's{' '}
+                                    Submit a Pull Request to QiDao's{' '}
                                     <a href="https://github.com//publu/QIPs">
                                         QIPs repository
                                     </a>

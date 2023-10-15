@@ -1,5 +1,6 @@
 import React from 'react';
 import { format } from 'date-fns';
+import { ProposalStatus } from './ProposalStatus'
 import { graphql } from 'gatsby';
 
 import Author from './Author';
@@ -15,7 +16,7 @@ const FrontmatterTable: React.FC<Props> = ({ frontmatter }) => {
                 <tr>
                     <th className="py-3 px-6 text-left font-bold">Author</th>
                     <td className="py-3 px-6">
-                        <Author author={frontmatter.author} />
+                        <Author author={frontmatter.author} showName={true} />
                     </td>
                 </tr>
                 <tr>
@@ -55,7 +56,9 @@ const FrontmatterTable: React.FC<Props> = ({ frontmatter }) => {
                         <th className="py-3 px-6 text-left font-bold">
                             Proposal
                         </th>
-                        <td className="py-3 px-6">{frontmatter.proposal}</td>
+                        <td className="py-3 px-6">
+                            <ProposalStatus url={frontmatter.proposal} />
+                        </td>
                     </tr>
                 )}
                 {frontmatter.created && (

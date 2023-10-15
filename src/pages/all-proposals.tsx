@@ -26,7 +26,8 @@ const AllProposals: React.FC<Props> = ({ data: { allMarkdownRemark } }) => {
                     id="content-center"
                     className="relative w-full pl-0 lg:w-3/4 lg:pl-5 mt-20"
                 >
-                    <div className="mb-3 space-y-3">
+                    <div className="mb-3 space-y-3 px-3">
+                       
                         <div className="mb-16"></div>
 
                         {columns.map((column: any) => {
@@ -34,10 +35,13 @@ const AllProposals: React.FC<Props> = ({ data: { allMarkdownRemark } }) => {
                                 column.nodes
                             );
                             return (
-                                <div key={column.fieldValue}>
-                                    <h3 className="text-2xl font-semibold mb-3">
-                                        {column.fieldValue}
-                                    </h3>
+                                <div key={column.fieldValue} className="proposal-list-container">
+                                    <div className="shadow-s p-5">
+                                        <h3 className="text-2xl font-semibold mb-3">
+                                            {column.fieldValue}
+                                        </h3>
+                                    </div>
+
                                     <ProposalListItem proposals={proposals} />
                                 </div>
                             );
