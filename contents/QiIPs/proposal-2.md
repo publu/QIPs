@@ -3,10 +3,10 @@ qip: 1
 network: Ethereum & Optimism
 title: Qips Purpose and Guidelines
 status: Implemented
-author: Kain Warwick (@kaiynne)
+author: Publu (@publu), Tekrajs (@tekrajs)
 created: 2019-06-10T00:00:00.000Z
 proposal: >-
-  https://snapshot.org/#/snxgov.eth/proposal/Qme74DFFv2CZDENkuD2HqYndFzAUtozFsn4U8khGeKfJsi
+  https://snapshot.org/#/qidao.eth/proposal/0x62ae5f092aa1d1469604d5c33c4795b7db2683fcf53444c15a1cdab85cfd8044
 type: Governance
 ---
 
@@ -130,17 +130,9 @@ Qipss may include auxiliary files such as diagrams. Such files must be named Qip
 
 The current Qips editors are
 
-` * Kain (@kaiynne)`
+` * Publu (@publu)`
 
-` * jj (@justinjmoses)`
-
-` * Kaleb (@kaleb-keny)`
-
-` * Danijel (@dgornjakovic)`
-
-` * Afif (@abandek)`
-  
-` * TerraBellus (@terrabellus)`
+` * Tekrajs (@Tekrajs)`
 
 ## Qips Editor Responsibilities
 
@@ -176,8 +168,8 @@ See [the revision history for further details](https://github.com/QiDaoio/), whi
 
 ### Bibliography
 
-[the QiDao discord]: https://discord.gg/a2E6uxk
-[pull request]: https://github.com/QiDaoio/Qipss/pulls
+[the QiDao discord]: https://discord.gg
+[pull request]: https://github.com/QiDaoio/
 [markdown]: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
 [bitcoin's bip-0001]: https://github.com/bitcoin/bips
 [python's pep-0001]: https://www.python.org/dev/peps/
