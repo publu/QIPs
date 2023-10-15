@@ -14,5 +14,10 @@
     margin-bottom: 1.25rem;
 }
 
-/* Add more custom styles for other elements as needed */
+@layer base {
+    .content a {
+        @apply text-blue-900;
+    }
+}
 
+/* Add more custom styles for other elements as needed */

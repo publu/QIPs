@@ -24,21 +24,18 @@ const allQipsQuery = `
 ${Frontmatter}
 query {
     allMarkdownRemark(
-        filter: { 
-            fileAbsolutePath: { regex: "/QiIPs/"}
-            frontmatter: { qip: { ne: null } }
+      filter: {fileAbsolutePath: {regex: "/QiIPs/"}, frontmatter: {qip: {ne: null}}}
+    ) {
+      group(field: {frontmatter: {status: SELECT}}) {
+        fieldValue
+        totalCount
+        nodes {
+          id
+          frontmatter {
+            ...Frontmatter
+          }
         }
-        ) {
-        group(field: frontmatter___status) {
-            fieldValue
-            totalCount
-            nodes {
-                id
-                frontmatter {
-                   ...Frontmatter
-                }
-            }
-        }
+      }
     }
 }
 `;
