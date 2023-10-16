@@ -47,7 +47,7 @@ const ProposalStatus: React.FC<{ url: string }> = ({ url }) => {
 
     
     return (
-        <div>
+        <div className='line-clamp-2 break-words'>
             <a className="text-blue-900" href={url} target="_blank" rel="noreferrer noopener">
                 {startCase(data?.proposal?.state)} &ndash; {data?.votes.length}{' '}
                 vote(s)
