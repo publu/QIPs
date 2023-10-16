@@ -47,15 +47,15 @@ const ProposalStatus: React.FC<{ url: string }> = ({ url }) => {
 
     
     return (
-        <div>
+        <div className='line-clamp-2 break-words'>
             <a className="text-blue-900" href={url} target="_blank" rel="noreferrer noopener">
                 {startCase(data?.proposal?.state)} &ndash; {data?.votes.length}{' '}
                 vote(s)
             </a>
 
-            <div className="mt-3 whitespace-nowrap">
+            <div className="mt-3 flex flex-col md:flex-row">
                 {Object.keys(choices).map((key) => (
-                    <span key={key}>
+                    <span key={key} className='mb-2'>
                         {key} - {choices[key]}
                     </span>
                 ))}
