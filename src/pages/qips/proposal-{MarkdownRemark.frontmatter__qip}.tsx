@@ -27,7 +27,7 @@ const Template: React.FC<Props> = ({ data }) => {
                                 <FrontmatterTable frontmatter={frontmatter} />
                             </div>
 
-                            <div className="markdown-content mt-3">
+                            <div className="markdown-content mt-3 p-3 md:p-none">
                                 <div
                                     className="prose max-w-none"
                                     dangerouslySetInnerHTML={{ __html: html }}
