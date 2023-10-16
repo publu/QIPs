@@ -3,3 +3,5 @@ node_modules/
 public
 src/gatsby-types.d.ts
 gatsby-types.d.ts
+.DS_Store
+.idea
