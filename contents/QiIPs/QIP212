@@ -1,0 +1,45 @@
+qip: 212
+title: MAI Bridging Parameters on Ethereum
+network: Ethereum
+status: Implemented
+author: QiDao team
+implementor: Guardians
+implementation-date: Immediately after approval
+proposal: https://vote.mai.finance/#/proposal/0x98232f547fc416286c9c1497cc997d249f01bc17a3d803f822d37275d2d30463
+created: 2023-12-04
+
+The goal of this proposal is to set bridging parameters for MAI on Ethereum.
+
+For context, please refer to the following Chain Risk documentation: https://docs.mai.finance/risks/chain-risk.
+
+### Parameters:
+
+* Minimum CTD (Circulating Supply to Chain Debt) Ratio: 100%
+This means that the amount of MAI debt that can be moved out of Ethereum is restricted to zero. In simple terms, no MAI debt can leave Ethereum under this parameter.
+* Maximum CTD Ratio: 100%
+This sets a limit on the MAI debt that can enter Ethereum from other chains to zero. Essentially, no new MAI debt from other chains can be added to Ethereum.
+
+### Term of Parameters:
+
+These parameters, if approved, will be in effect from the time of approval until the end of 2024, unless DAO votes to update sooner.
+
+### Renewal requirements:
+
+A new DAO vote is required before the end of 2024 to either extend, or modify these parameters.
+
+### Impact on Ethereum:
+
+* The circulating supply of MAI on Ethereum currently exceeds total debt by around 248k MAI. In order to meet compliance with this proposal, the DAOs treasury will need to burn or bridge out an equal amount of MAI from its holdings in the Curve MAI-FRAXBP LP.
+* The implementation of these parameters would mean that Ethereum remains an isolated deployment for the MAI stablecoin in terms of circulating MAI. No new MAI debt can enter from other chains, nor can existing MAI debt on Ethereum be transferred to other chains.
+* This decision can affect liquidity, risk exposure, and the operational dynamics of MAI on Ethereum.
+* The proposed parameters are intended to manage and mitigate chain-specific risks as outlined in the QiDao Chain Risk documentation and as part of the Community Strategy to Restabilize MAI, following QIP209 approval.
+
+### Quorum Standards
+
+The option with the most votes will be adopted.
+
+### Options
+
+* Approve proposal
+* Further discussions needed
+* Abstain
