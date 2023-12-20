@@ -1,7 +1,7 @@
 qip: 211
 title: Full Deprecation of Old QI
 network: Polygon
-status: Approved
+status: Implemented
 author: Several community members
 implementor: Guardians
 implementation-date: Immediately after approval
