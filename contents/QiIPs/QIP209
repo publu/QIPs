@@ -1,0 +1,45 @@
+qip: 209
+title: Approving Community Strategy to Restabilize MAI
+network: All chains
+status: Approved
+author: Several community members
+implementor: Guardians and core team
+implementation-date: Immediately after approval
+proposal: https://vote.mai.finance/#/proposal/0x66b60aa4788f91b0018a964349bd459bbd89f05cbb98ce71c586db4ce8e76d51
+created: 2023-11-07
+
+There are currently several ideas to stabilize MAI that DAO contributors have assembled via discussions on the Discord forum. These range from new protocol features to operational changes.
+
+Below is an aggregation of these strategies. The purpose of this proposal is to approve these as the DAO’s stabilization plan.
+
+### 1. Vote to implement bridging limits for each chain
+
+MAI bridging can be limited by handling allotments to bridges. For example, QiDao’s Base deployment has no allocation for outflow or inflow bridging. Under this strategy, the DAO would place limits on the rest of the DAO’s chain deployments via QIPs. More information about bridge limits can be found in the docs here: https://docs.mai.finance/risks/chain-risk.
+
+QIPs under this strategy would need to decide on min and max circulating supply to debt ratios. They would also need to determine terms for these limits.
+
+### 2. Implement stability pool for liquidations: sMAI
+
+A stability pool would allow MAI holders priority access to liquidating debt positions that fall below the liquidation threshold. Aside from earning liquidation fees, MAI depositors into sMAI could be further incentivized by the protocol. These incentives could range from direct emissions to lock-based rewards. An implementation QIP will need to be passed to approve the final version of sMAI.
+
+### 3. Use 50% of weekly protocol revenue to buyback MAI
+
+50% of revenue is currently directed towards aveQI stakers on Ethereum. The remaining 50% of weekly revenue will be allocated towards MAI buybacks if this proposal passes.
+
+### 4. Pause borrowing on chains where MAI is depegged
+
+By pausing further minting of MAI on chains where MAI is already depegged, the DAO can prevent shorting and further sell pressure on MAI.
+
+### 5. Continue to expand borrowing on chains where MAI is not depegged
+
+In order to continue to scale revenue, QiDao should continue to grow the protocol on chains where MAI is not deppeged. These chains include the burgeoning new L2s like Scroll, zkEVM, Linea, Base, and Mantle (among others). The growing revenue will contribute to the flow of MAI buybacks by the DAO.
+
+### Quorum standards
+
+The option with the most votes will be adopted.
+
+### Options
+
+* Approve proposal
+* Further discussions needed
+* Abstain
