@@ -48,7 +48,7 @@ const Home: React.FC = () => {
                                 </li>
                                 <li>
                                     Fork the repository by visiting the QIPs{' '}
-                                    <a href="https://github.com//publu/QIPs">
+                                    <a href="https://github.com/publu/QIPs">
                                         repo
                                     </a>{' '}
                                     and pressing "Fork" in the top right.

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "description": "qips",
-  "author": "Tekrajs",
+  "author": "Tekrajs & Publu",
   "keywords": [
     "gatsby"
   ],
@@ -18,7 +18,7 @@
   "dependencies": {
     "@mdx-js/react": "^2.3.0",
     "autoprefixer": "^10.4.16",
-    "gatsby": "^5.12.4",
+    "gatsby": "^5.13.0",
     "gatsby-plugin-image": "^3.12.1",
     "gatsby-plugin-manifest": "^5.12.1",
     "gatsby-plugin-mdx": "^5.12.1",
