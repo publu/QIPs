@@ -24,7 +24,7 @@ const allQipsQuery = `
 ${Frontmatter}
 query {
     allMarkdownRemark(
-      filter: {fileAbsolutePath: {regex: "/QiIPs/"}, frontmatter: {qip: {ne: null}}}
+      filter: {fileAbsolutePath: {regex: "/QIP/"}, frontmatter: {qip: {ne: null}}}
     ) {
       group(field: {frontmatter: {status: SELECT}}) {
         fieldValue

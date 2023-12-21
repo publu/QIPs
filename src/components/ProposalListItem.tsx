@@ -25,8 +25,7 @@ const ProposalListItem = (props: any) => {
                                                         aria-expanded="false"
                                                         data-headlessui-state=""
                                                     >
-                                                        <a
-                                                            href="#/profile/0xAd95A5fE898679B927C266eB2eDfAbC7fe268C27"
+                                                        <div
                                                             className="whitespace-nowrap"
                                                             tabIndex={-1}
                                                         >
@@ -37,7 +36,7 @@ const ProposalListItem = (props: any) => {
                                                                         ?.author
                                                                 }
                                                             />
-                                                        </a>
+                                                        </div>
                                                     </button>
                                                 </div>
                                             </div>
