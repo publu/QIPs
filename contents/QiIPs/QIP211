@@ -1,0 +1,23 @@
+qip: 211
+title: Full Deprecation of Old QI
+network: Polygon
+status: Implemented
+author: Several community members
+implementor: Guardians
+implementation-date: Immediately after approval
+proposal: https://vote.mai.finance/#/proposal/0x37af10a61c941cc87f526800bd8447d667fdf5c2555bce59986d364719df86d2
+created: 2023-11-29
+
+This proposal seeks to fully deprecate old locked QI by enabling the emergency withdrawal of old QI (0x580A84C73811E1839F75d86d75d88cCa0c241fF4) from escrowed QI (eQI) on Polygon.
+
+Enabling this function will allow any users with locked old QI in the contract on Polygon to withdraw these tokens, regardless of unlock date.
+
+### Quorum Standard
+
+The option with the most votes will be adopted.
+
+### Options
+
+* Approve proposal
+* Further discussions needed
+* Abstain

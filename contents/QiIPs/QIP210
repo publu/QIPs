@@ -1,0 +1,68 @@
+qip: 210
+title: Messari Onboarding
+network: All chains
+status: Approved
+author: Messari team
+implementor: Messari team
+implementation-date: Q1 2024
+proposal: https://vote.mai.finance/#/proposal/0xa49879526031bd01de757138cac162519c26cefea97ea0943e8310b674ba47fc
+created: 2023-11-15
+
+### Abstract
+
+We propose that Messari provides research and reporting services for QiDao in the form of brief quarterly reports. This will serve to better inform existing stakeholders and attract new ones while building out the open-source data infrastructure for the community.
+
+### Proposal breakdown
+
+Brief Quarterly Reports:
+
+4 reports on QI DAO that present and analyze KPIs and fundamental metrics including:
+
+* Key metrics table: Total Deposits, Total Borrows, Total Repays, Total Withdraws, Protocol Revenue, Number of Pools, Number of Active Users.
+* Collateral Breakdown Chart: Daily Collateral share by token group and chain.
+* Vault Health Chart: Daily Collateralization ratios across the 5 largest pools by value
+* Protocol Revenue Chart: Daily revenues by chain and total revenue moving average
+* DAUs Chart: Daily active users by chain
+* Deposits/Withdraws chart: Daily deposits and withdraws by token group and chain
+* Borrow/Repay chart: Daily MAI borrowed and repaid
+* Key Events: Major partnerships, launches, and releases will be highlighted
+* Each report will include 4 charts out of the selection listed above, as well as 3 qualitative events.
+* Example report: https://messari.io/report/osmosis-q3-2023-brief?referrer=protocol-reporting-research
+
+### QiDao Dashboard
+
+* Link to existing dashboard: https://messari.io/project/mai-finance/profile
+* Messari will coordinate with core contributors at QiDao to ensure that the information on this dashboard is correct.
+
+### Pricing
+
+* $7,500 will be charged per report
+* Payment will be made to an address specified by the Messari team following approval.
+* Accepted tokens: [BTC, ETH, and USDC (ERC-20)]
+
+### Resources
+
+Research: Our analysts spend several weeks researching and writing each report, along with an extensive internal editing and review process by the broader team.
+
+### Resources Continued
+
+* Data Science and Engineering: Each report will have its own dedicated data science and engineering resources tasked with providing all the relevant raw data. This requires ingesting large amounts of data which is housed in a data warehouse, incurring storage and compute costs.
+* Distribution: We have several members of the team working on distribution for these reports across all of Messari’s channels..
+
+### Term
+
+The term for these services will be 1 year, or 4 reports. After this period, Messari will approach the DAO for renewal.
+
+### Motivation
+
+This initiative focuses on surfacing the on-chain metrics and key developments of Qi DAO to facilitate protocol business development. by providing regular, data-centric reports from independent analysts, your audience can gain deep insights into the protocol's performance, including daily revenue streams and significant governance changes. This transparency highlights a commitment to informing and guiding users through the intricacies of Qi DAO's operations and strategic decisions.
+
+### Quorum Standards
+
+The option with the most votes will be adopted.
+
+### Options
+
+* Approve
+* Further discussions needed
+* Abstain

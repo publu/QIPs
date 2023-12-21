@@ -1,0 +1,89 @@
+qip: 214
+title: Fee Setting on Ethereum
+network: Ethereum
+status: Vote pending
+author: QiDao team
+implementor: Guardians
+implementation-date: Immediately after approval
+proposal: https://vote.mai.finance/#/proposal/0xb3b8f3bfe036849e7a2ff3e555a9cdf2048a0d42d6d8ada60df5ee67a6ee9147
+created: 2023-12-20
+
+This proposal seeks to set terms for fees charged by the protocol. The goal of these changes is to make the effective ROI on MAI loans 5% for QiDao. The reasonings for this goal are the following:
+
+* Set cost of MAI loans on par with the cost on other stablecoin projects
+* Stabilize MAI at its current TVL and level of expenditure on Ethereum
+* Allow the protocol to onboard new loans. Per QIP209, QiDao can only enable loans on chains where MAI is at peg.
+
+Below are the average loan costs for comparable collaterals at peer protocols.
+
+* yvLINK: no comparable protocols. GHO offers 5.36% for regular LINK in open p2p lending pool
+* ETH Curve LPs: no comparable protocols
+* WBTC: MIM (7% interest), GHO (5.36% interest), DAI (5.78% interest)
+* WETH: MIM (7% interest), GHO (5.36% interest), DAI (5.53% interest)
+* wstETH: GHO (5.36% interest), DAI (5.24% interest)
+* cbETH: GHO (5.36% interest)
+* LDO: GHO (5.78% interest)
+
+Note: GHO is a comparable stablecoin by size, but not by product, given that third party users can borrow collaterals from pools. This is different from the CDP offering at QiDao.
+
+On Ethereum, collateralization levels are much higher than on L2s. As such, the performance fees on loans on L1 do not need to be as high in order to reach the 5% ROI threshold. For context, these are the weighted average collateralizations for each of the collaterals where performance fees will be applied:
+
+* cbETH: 308%
+* wstETH: No open loans
+* stETH Curve LPs: 450%
+
+### Fees
+
+WETH:
+* Current: 0.5% repayment fee
+* Update: 5% interest, no repayment fee
+WBTC:
+* Current: 0.5% repayment fee
+* Update: 5% interest, no repayment fee
+yvWETH:
+* Current: 0.5% repayment fee
+* Update: 5% interest, no repayment fee
+yvLINK:
+* Current: 0.5% repayment fee
+* Update: 5% interest, no repayment fee
+sd-stETH-ETH (original):
+* Current: 0.5% repayment fee
+* Update: 5% interest, no repayment fee
+yv-stETH-ETH (original):
+* Current: 0.5% repayment fee
+* Update: 5% interest, no repayment fee
+sd-stETH-ETH:
+* Current: 0.36% performance fee, 0.5% repayment fee
+* Update: 1% performance fee, 0.5% repayment fee
+yv-stETH-ETH:
+* Current: 0.49% performance fee, 0.5% repayment fee
+* Update: 1% performance fee, 0.5% repayment fee
+cvx-stETH-ETH:
+* Current: 0.44% performance fee, 0.5% repayment fee
+* Update: 1% performance fee, 0.5% repayment fee
+CRV:
+* Current: 11% interest
+* Update: 11% interest
+cbETH:
+* Current: 0.81% performance fee, 0.5% repayment fee
+* Update: 1.5% performance fee, 0.5% repayment fee
+stETH:
+* Current: 0.8% performance fee, 0.5% repayment fee
+* Update: 1.5% performance fee, 0.5% repayment fee
+LDO:
+* Current: 4% interest
+* Update: 8% interest
+
+### Terms
+
+New vote is required to update these fees
+
+### Quorum Standards
+
+The option with the most votes will be adopted.
+
+### Options
+
+* Approve proposal
+* Further discussions needed
+* Abstain
