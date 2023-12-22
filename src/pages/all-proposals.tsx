@@ -57,7 +57,7 @@ export const query = graphql`
     query {
         allMarkdownRemark(
             filter: {
-                fileAbsolutePath: { regex: "/QiIPs/" }
+                fileAbsolutePath: { regex: "/QIP/" }
                 frontmatter: { qip: { ne: null } }
             }
         ) {

@@ -1,0 +1,19 @@
+name: QiDao PR build
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - name: Get latest npm version
+        run: npm install -g npm@latest
+      - name: Install dependencies
+        run: npm install --prefer-offline --no-audit
+      - name: Validate QIP frontmatters
+        run: npm test

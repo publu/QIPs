@@ -41,14 +41,14 @@ const Home: React.FC = () => {
                             <ol className="list-decimal list-inside mb-4">
                                 <li>
                                     Review{' '}
-                                    <a href="/qips/proposal-1">
-                                        Proposal-1
+                                    <a href="/qips/QIP209">
+                                        QIP209
                                     </a>
                                     .
                                 </li>
                                 <li>
                                     Fork the repository by visiting the QIPs{' '}
-                                    <a href="https://github.com//publu/QIPs">
+                                    <a href="https://github.com/publu/QIPs">
                                         repo
                                     </a>{' '}
                                     and pressing "Fork" in the top right.
