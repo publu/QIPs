@@ -29,10 +29,10 @@ const Home: React.FC = () => {
                                 </a>
                             </h1>
                             <p className="mb-4">
-                                QI Dao Improvement Proposals (QIPs) describe
-                                standards for the QI Dao platform, including
-                                core protocol specifications, client APIs, and
-                                contract standards.
+                                QiDao Improvement Proposals (QIPs) describe standards for the QiDao Protocol,
+                                including core protocol specifications, client APIs, contract standards, 
+                                and strategic charters. They also request parameter changes to existing
+                                smart contracts that make up the protocol.
                             </p>
 
                             <h2 className="text-xl font-bold my-4">
@@ -40,11 +40,7 @@ const Home: React.FC = () => {
                             </h2>
                             <ol className="list-decimal list-inside mb-4">
                                 <li>
-                                    Review{' '}
-                                    <a href="/qips/QIP209">
-                                        QIP209
-                                    </a>
-                                    .
+                                    Review General QIP Template, New Asset Template, and QIP Procedures.
                                 </li>
                                 <li>
                                     Fork the repository by visiting the QIPs{' '}
@@ -73,6 +69,9 @@ const Home: React.FC = () => {
                                     .
                                 </li>
                             </ol>
+                            <h2 className="text-xl font-bold my-4">
+                                Status Terms
+                            </h2>
 
                             {/* Rest of the content with appropriate Tailwind CSS classes */}
                         </div>
