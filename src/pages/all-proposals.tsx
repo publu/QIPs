@@ -7,6 +7,8 @@ import { sortBy, filter, flow } from 'lodash/fp';
 //@ts-ignore
 import statuses from '../../ps/statuses';
 import Layout from '../layout';
+
+import Templates from '../components/Templates';
 interface Props {
     data: any;
 }
@@ -27,6 +29,8 @@ const AllProposals: React.FC<Props> = ({ data: { allMarkdownRemark } }) => {
                     className="relative w-full pl-0 lg:w-3/4 lg:pl-5 mt-20"
                 >
                     <div className="mb-3 space-y-3 px-3">
+                       
+                       <Templates />
                        
                         <div className="mb-16"></div>
 
