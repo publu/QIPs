@@ -14,7 +14,8 @@ interface Props {
 }
 
 // All Proposals component
-const AllProposals: React.FC<Props> = ({ data: { allMarkdownRemark } }) => {
+const AllProposals: React.FC<Props> = ({ data: { allMarkdownRemark, allTemplates } }) => {
+   
     const { group } = allMarkdownRemark;
     const columns = flow(
         filter(({ fieldValue }) => statuses.indexOf(fieldValue) > -1),
@@ -30,12 +31,12 @@ const AllProposals: React.FC<Props> = ({ data: { allMarkdownRemark } }) => {
                 >
                     <div className="mb-3 space-y-3 px-3">
                        
-                       <Templates />
+                       <Templates data={allTemplates} />
                        
                         <div className="mb-16"></div>
 
                         {columns.map((column: any) => {
-                            const proposals = sortBy('frontmatter.proposalId')(
+                            const proposals = sortBy('frontmatter.qip')(
                                 column.nodes
                             );
                             return (
@@ -62,6 +63,35 @@ export const query = graphql`
         allMarkdownRemark(
             filter: {
                 fileAbsolutePath: { regex: "/QIP/" }
+                frontmatter: { qip: { ne: null } }
+            }
+        ) {
+            group(field: { frontmatter: { status: SELECT } }) {
+                fieldValue
+                totalCount
+                nodes {
+                    id
+                    frontmatter {
+                        qip
+                        title
+                        shortDescription
+                        author
+                        network
+                        type
+                        proposal
+                        implementor
+                        release
+                        created
+                        updated
+                        status
+                    }
+                }
+            }
+        }
+
+        allTemplates: allMarkdownRemark(
+            filter: {
+                fileAbsolutePath: { regex: "/Templates/" }
                 frontmatter: { qip: { ne: null } }
             }
         ) {
