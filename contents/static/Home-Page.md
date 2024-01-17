@@ -4,9 +4,9 @@ QiDao Improvement Proposals (QIPs) describe standards for the QiDao Protocol, in
 
 ### Contributing
 
-1. Review General QIP Template, New Asset Template, and QIP Procedures.
-2. Fork the repository by visiting the QIPs repo and pressing "Fork" in the top right.
-3. Add your QIP to your fork of the repository. There is a template Proposal here.
+1. Review [General QIP Template](https://github.com/publu/QIPs/blob/main/contents/Templates/general-qip-template), [New Asset Template](https://github.com/publu/QIPs/blob/main/contents/Templates/new-asset-template), and [QIP Procedures](https://github.com/publu/QIPs/blob/main/QIP-Procedures.md).
+2. Fork the repository by visiting the [QIPs repo](https://github.com/publu/QIPs) and pressing "Fork" in the top right.
+3. Add your QIP to your fork of the repository. There are proposal templates [here](https://github.com/publu/QIPs/tree/main/contents/Templates).
 4. Submit a Pull Request to QiDao's QIPs repository.
 
 ### Status terms
