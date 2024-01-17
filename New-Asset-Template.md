@@ -1,5 +1,5 @@
 ---
-sip: <to be assigned>
+qip: <to be assigned>
 title: <QIP title>
 network: <CHAIN NAME>
 status: <Draft>
