@@ -73,7 +73,7 @@ exports.createSchemaCustomization = ({ actions }) => {
         title: String!
         shortDescription: String
         network: String
-        author: String!
+        author: String
         type: String
         proposal: String
         implementor: String
@@ -81,7 +81,7 @@ exports.createSchemaCustomization = ({ actions }) => {
         created: Date
         updated: Date
         date: Date
-        status: String!
+        status: String
       }
     `;
     createTypes(typeDefs);
