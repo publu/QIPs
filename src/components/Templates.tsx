@@ -1,5 +1,4 @@
 import React from 'react';
-import { graphql } from 'gatsby';
 import TemplateListItem from '../components/TemplateListItem';
 import { sortBy, filter, flow } from 'lodash/fp';
 
@@ -11,6 +10,8 @@ interface Props {
 }
 
 const Templates: React.FC<Props> = ({ data }) => {
+    
+    console.log(data)
     const { group } = data;
 
     const columns = flow(
@@ -21,7 +22,7 @@ const Templates: React.FC<Props> = ({ data }) => {
     return (
         <div className="proposal-list-container">
             <div className="shadow-s p-5">
-                <h3 className="text-2xl font-semibold mb-1">Templates</h3>
+                <h3 className="text-2xl font-semibold mb-1 text-orange-600">Template</h3>
             </div>
 
             {columns.map((column: any) => {
@@ -46,38 +47,5 @@ const Templates: React.FC<Props> = ({ data }) => {
         </div>
     );
 };
-
-export const query = graphql`
-    query {
-        allMarkdownRemark(
-            filter: {
-                fileAbsolutePath: { regex: "/Templates/" }
-                frontmatter: { qip: { ne: null } }
-            }
-        ) {
-            group(field: { frontmatter: { status: SELECT } }) {
-                fieldValue
-                totalCount
-                nodes {
-                    id
-                    frontmatter {
-                        qip
-                        title
-                        shortDescription
-                        author
-                        network
-                        type
-                        proposal
-                        implementor
-                        release
-                        created
-                        updated
-                        status
-                    }
-                }
-            }
-        }
-    }
-`;
 
 export default Templates;

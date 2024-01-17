@@ -45,7 +45,7 @@ const TemplateListItem = (props: any) => {
                                             </span>
                                         </div>
                                         <a
-                                            href={`https://github.com/publu/QIPs/blob/main/contents/Templates/Template${template.frontmatter.qip}.md`}
+                                            href={`https://github.com/publu/QIPs/blob/main/contents/Templates/template-${template.frontmatter.qip}.md`}
                                             className="cursor-pointer"
                                         >
                                             <div className="relative flex mb-1 mt-3 break-words pr-[80px] leading-[32px]">

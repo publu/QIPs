@@ -37,6 +37,13 @@ const config: GatsbyConfig = {
     },
     __key: "contents"
   },
+  {
+    resolve: `gatsby-source-filesystem`,
+    options: {
+      name: `markdown-pages`,
+      path: `${__dirname}/contents/static`,
+    },
+  },
   `gatsby-transformer-remark`,
 ]
 };
