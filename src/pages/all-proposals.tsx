@@ -1,6 +1,5 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Navigation from '../components/Navigation';
 import ProposalListItem from '../components/ProposalListItem';
 import { sortBy, filter, flow } from 'lodash/fp';
 

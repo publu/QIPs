@@ -1,5 +1,5 @@
 ---
-qip: 209
+qip: 1
 title: Approving Community Strategy to Restabilize MAI
 network: All chains
 status: Approved

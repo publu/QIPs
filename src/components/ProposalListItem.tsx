@@ -45,7 +45,7 @@ const ProposalListItem = (props: any) => {
                                             </span>
                                         </div>
                                         <a
-                                            href={`/qips/QIP${proposal.frontmatter.qip}`}
+                                            href={`/qips/QIP-${proposal.frontmatter.qip}`}
                                             className="cursor-pointer"
                                         >
                                             <div className="relative flex mb-1 mt-3 break-words pr-[80px] leading-[32px]">
