@@ -13,7 +13,7 @@ interface Props {
 }
 
 // All Proposals component
-const AllProposals: React.FC<Props> = ({ data: { allMarkdownRemark, allTemplates } }) => {
+const AllProposals: React.FC<Props> = ({ data: { allMarkdownRemark } }) => {
    
     const { group } = allMarkdownRemark;
     const columns = flow(
@@ -30,7 +30,7 @@ const AllProposals: React.FC<Props> = ({ data: { allMarkdownRemark, allTemplates
                 >
                     <div className="mb-3 space-y-3 px-3">
                        
-                       <Templates data={allTemplates} />
+                       <Templates />
                        
                         <div className="mb-16"></div>
 
@@ -62,35 +62,6 @@ export const query = graphql`
         allMarkdownRemark(
             filter: {
                 fileAbsolutePath: { regex: "/QIP/" }
-                frontmatter: { qip: { ne: null } }
-            }
-        ) {
-            group(field: { frontmatter: { status: SELECT } }) {
-                fieldValue
-                totalCount
-                nodes {
-                    id
-                    frontmatter {
-                        qip
-                        title
-                        shortDescription
-                        author
-                        network
-                        type
-                        proposal
-                        implementor
-                        release
-                        created
-                        updated
-                        status
-                    }
-                }
-            }
-        }
-
-        allTemplates: allMarkdownRemark(
-            filter: {
-                fileAbsolutePath: { regex: "/Templates/" }
                 frontmatter: { qip: { ne: null } }
             }
         ) {
