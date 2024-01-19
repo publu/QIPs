@@ -21,7 +21,9 @@ Each status change is requested by the author and reviewed by the editors. Use a
 5. Rejected - a QIP that has failed to reach sufficient support from the DAO via voting
 6. Implemented - a QIP that has been released to mainnet
 
-New proposals must follow the template here.
+New proposals must follow the templates [here](https://github.com/publu/QIPs/tree/main/contents/Templates).
+
+For new draft proposals, please write "To be assigned" for QIP.
 
 Quorum standard for all future votes will be a simple majority of participating votes.
 
