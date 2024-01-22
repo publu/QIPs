@@ -17,7 +17,6 @@ const AllProposals: React.FC<Props> = ({
     data: { allMarkdownRemark, templates },
 }) => {
 
-    console.log(allMarkdownRemark)
     const _statuses = statuses.map((status:any) =>status.toLowerCase());
     const { group } = allMarkdownRemark;
     const columns = flow(

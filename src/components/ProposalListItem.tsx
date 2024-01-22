@@ -1,6 +1,17 @@
 import React from 'react';
 import Author from './Author';
 // Proposal list item component
+
+const statusColor:any = {
+    Draft: '#757575',
+    'Review Pending': '#FFEB3B',
+    'Vote Pending': '#FFEB3B',
+    Rejected: '#F44336',
+    Approved: '#4CAF50',
+    Implemented: '#4CAF50',
+    Templates: '#757575',
+};
+
 const ProposalListItem = (props: any) => {
     const { proposals } = props;
 
@@ -18,7 +29,7 @@ const ProposalListItem = (props: any) => {
                                     <div>
                                         <div className="flex h-[26px] items-start justify-between">
                                             <div className="flex items-center gap-1">
-                                                <div className='flex'>
+                                                <div className="flex">
                                                     <button
                                                         id="headlessui-popover-button-15"
                                                         type="button"
@@ -40,7 +51,7 @@ const ProposalListItem = (props: any) => {
                                                     </button>
                                                 </div>
                                             </div>
-                                            <span className="bg-[#BB6BD9] State text-white p-[1px] px-[7px] rounded-[14px] font-normal">
+                                            <span style={{backgroundColor: statusColor[proposal?.frontmatter?.status]}} className="bg-[#BB6BD9] State text-white p-[1px] px-[7px] rounded-[14px] font-normal">
                                                 {proposal?.frontmatter?.status}
                                             </span>
                                         </div>
@@ -49,17 +60,13 @@ const ProposalListItem = (props: any) => {
                                             className="cursor-pointer"
                                         >
                                             <div className="relative flex mb-1 mt-3 break-words pr-[80px] leading-[32px]">
-                                                
                                                 {/* <span className='mr-1'>
                                                     <img className='w-[25px] rounded-[20px]' src="https://cdn.stamp.fyi/avatar/eth:0xAd95A5fE898679B927C266eB2eDfAbC7fe268C27?s=40" alt="" />
                                                 </span> */}
-                                                
+
                                                 <h3 className="inline pr-2">
                                                     QIP{' '}
-                                                    {
-                                                        proposal?.frontmatter
-                                                            ?.qip
-                                                    }
+                                                    {proposal?.frontmatter?.qip}
                                                     :{' '}
                                                     {
                                                         proposal?.frontmatter
@@ -82,7 +89,6 @@ const ProposalListItem = (props: any) => {
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 );
             })}
