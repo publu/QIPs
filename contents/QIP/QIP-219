@@ -1,0 +1,39 @@
+---
+qip: 219
+title: Plan to increase borrow costs on all V2 vaults
+network: Arbitrum, Optimism, Polygon PoS, Base, Ethereum, Moonbeam, Metis, BNB, Polygon zkEVM
+status: Draft
+author: Deadley
+implementor: Guardians
+implementation-date: TBU
+proposal: TBU
+created: 2024-01-18
+---
+
+### **Summary**
+
+The purpose of this proposal is to increase the borrow costs on all V2 loans provided by QiDao from the current rates to the fed funds rate. Applicable to loans that charge less than this rate.
+
+### **Abstract**
+
+The primary objective of this QIP is to propose an increase in the borrow cost on loans issued by QiDao to at least the fed funds rate. This adjustment is deemed necessary to maintain a competitive edge, cover increased operational costs, and ensure a healthy risk-return balance.
+
+### **Motivation**
+
+Market Analysis: A thorough market analysis indicates a trend towards higher interest rates in the Defi sector. By increasing borrow costs, QiDao aims to remain competitive.
+
+Risk Management: The proposed increase will contribute to a more robust risk management strategy, ensuring adequate coverage for potential market fluctuations and economic uncertainties.
+
+Operational Sustainability: The adjustment will contribute to maintaining the financial health and sustainability of QiDao.
+
+Investor Confidence: The revised interest rate is expected to enhance investor confidence by reflecting a realistic and competitive approach to market conditions.
+
+### **Specification**
+
+### **Rationale**
+
+I believe that the proposed increase is a prudent step towards ensuring the long-term viability and success of the Protocol.
+
+### **Configurable Values**
+
+MAI borrow costs for V2 vaults on all chains to follow the Fed Funds Rate. Applicable to loans that currently charge less than this amount.
