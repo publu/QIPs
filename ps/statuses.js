@@ -1,10 +1,9 @@
 module.exports = [
     'Draft',
-    'Feasibility',
-    'SC_Review_Pending',
-    'Vote_Pending',
+    'Review Pending',
+    'Vote Pending',
     'Approved',
-    'Implemented',
     'Rejected',
+    'Implemented',
     'Deprecated',
   ]
