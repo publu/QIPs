@@ -5,9 +5,9 @@ network: <CHAIN NAME>
 status: <Draft>
 author: QiDao Protocol
 implementor: "[FirstName LastName (@GitHubUsername), FirstName LastName <foo@bar.com>, FirstName (@GitHubUsername), GitHubUsername (@GitHubUsername)]"
-implementation-date: <yyyy-mm-dd>
-proposal: <snapshot.org proposal link> # optional
-created: <yyyy-mm-dd>
+implementation-date: 1970-01-01 # 
+proposal: https://snapshot.org # Link to the proposal on snapshot.org (optional)
+created: 1970-01-01
 ---
 
 ### Summary

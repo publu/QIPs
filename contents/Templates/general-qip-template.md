@@ -5,9 +5,9 @@ network: <CHAIN NAME>
 status: <Draft>
 author: QiDao Protocol
 implementor: "[FirstName LastName (@GitHubUsername), FirstName LastName <foo@bar.com>, FirstName (@GitHubUsername), GitHubUsername (@GitHubUsername)]"
-implementation-date: <yyyy-mm-dd>
-proposal: <snapshot.org proposal link> # optional
-created: <yyyy-mm-dd>
+implementation-date: 1970-01-01 # 
+proposal: https://snapshot.org # Link to the proposal on snapshot.org (optional)
+created: 1970-01-01
 ---
 
 This is the suggested template for new QIPs. Note that Proposals number will be assigned by an editor. When opening a pull request to submit your Proposal, please use an abbreviated title in the filename, qip-draft_title_abbrev.md. The title should be 44 characters or less
