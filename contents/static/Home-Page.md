@@ -9,6 +9,8 @@ QiDao Improvement Proposals (QIPs) describe standards for the QiDao Protocol, in
 3. Add your QIP to your fork of the repository. There are proposal templates [here](https://github.com/publu/QIPs/tree/main/contents/Templates).
 4. Submit a Pull Request to QiDao's QIPs repository.
 
+For more detailed instructions on proposing QIPs via Github, please see this [Governance Page guide](https://qidao.notion.site/Introducing-QiDao-s-Governance-Page-cf07d2aea12c48d88582cf3284c0a0c8).
+
 ### Status terms
 
 1. Draft - The initial state of a new QIP before it has been assessed
