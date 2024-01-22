@@ -41,7 +41,7 @@ const TemplateListItem = (props: any) => {
                                                     </button>
                                                 </div>
                                             </div>
-                                            <span className="bg-[#f6cf62] State text-white p-[2px] px-[8px] rounded-[14px] font-normal">
+                                            <span className="bg-[#757575] State text-white p-[2px] px-[8px] rounded-[14px] font-normal">
                                                 {template?.frontmatter?.title ||
                                                     'Some Title'}
                                             </span>
