@@ -13,11 +13,15 @@ interface Props {
 }
 
 // All Proposals component
-const AllProposals: React.FC<Props> = ({ data: { allMarkdownRemark } }) => {
-   
+const AllProposals: React.FC<Props> = ({
+    data: { allMarkdownRemark, templates },
+}) => {
+
+    console.log(allMarkdownRemark)
+    const _statuses = statuses.map((status:any) =>status.toLowerCase());
     const { group } = allMarkdownRemark;
     const columns = flow(
-        filter(({ fieldValue }) => statuses.indexOf(fieldValue) > -1),
+        filter(({ fieldValue }) => _statuses.indexOf(fieldValue.toLowerCase()) > -1),
         sortBy(({ fieldValue }) => statuses.indexOf(fieldValue))
     )(group) as any;
 
@@ -29,9 +33,8 @@ const AllProposals: React.FC<Props> = ({ data: { allMarkdownRemark } }) => {
                     className="relative w-full pl-0 lg:w-3/4 lg:pl-5 mt-20"
                 >
                     <div className="mb-3 space-y-3 px-3">
-                       
-                       <Templates />
-                       
+                        <Templates templates={templates} />
+
                         <div className="mb-16"></div>
 
                         {columns.map((column: any) => {
@@ -39,7 +42,10 @@ const AllProposals: React.FC<Props> = ({ data: { allMarkdownRemark } }) => {
                                 column.nodes
                             );
                             return (
-                                <div key={column.fieldValue} className="proposal-list-container">
+                                <div
+                                    key={column.fieldValue}
+                                    className="proposal-list-container"
+                                >
                                     <div className="shadow-s p-5">
                                         <h3 className="text-2xl font-semibold mb-3">
                                             {column.fieldValue}
@@ -87,6 +93,23 @@ export const query = graphql`
                 }
             }
         }
+
+        templates: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/template/" } }) {
+            nodes {
+                parent {
+                    ... on File {
+                        base
+                    }
+                }
+                frontmatter {
+                    qip
+                    title
+                    author
+                }
+                html
+            }
+        }
+        
     }
 `;
 

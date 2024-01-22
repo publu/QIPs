@@ -5,8 +5,12 @@ import { sortBy, filter, flow } from 'lodash/fp';
 //@ts-ignore
 import statuses from '../../ps/statuses';
 
-const Templates: React.FC = () => {
+interface Props {
+    templates: any;
+}
 
+const Templates: React.FC<Props> = ({templates:{nodes}}) => {
+    
     return (
         <div className="proposal-list-container">
             <div className="shadow-s p-5">
@@ -15,7 +19,7 @@ const Templates: React.FC = () => {
                     <div
                         className="proposal-list-container"
                     >
-                        <TemplateListItem templates= {['general-qip-template','new-asset-template']}/>
+                        <TemplateListItem templates= {nodes}/>
                     </div>
         </div>
     );

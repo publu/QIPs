@@ -30,7 +30,9 @@ const TemplateListItem = (props: any) => {
                                                                 <span className="w-full cursor-pointer truncate text-skin-link">
                                                                     <div className="flex">
                                                                         <span>
-                                                                            {"<Author Name>"}
+                                                                            {
+                                                                                template?.frontmatter?.author || "<Author Name>"
+                                                                            }
                                                                         </span>
                                                                     </div>
                                                                 </span>
@@ -40,16 +42,29 @@ const TemplateListItem = (props: any) => {
                                                 </div>
                                             </div>
                                             <span className="bg-[#f6cf62] State text-white p-[2px] px-[8px] rounded-[14px] font-normal">
-                                                {template}
+                                                {template?.frontmatter?.title ||
+                                                    'Some Title'}
                                             </span>
                                         </div>
                                         <a
-                                            href={`https://github.com/publu/QIPs/blob/main/contents/Templates/${template}`}
+                                            href={`https://github.com/publu/QIPs/blob/main/contents/Templates/${template?.parent?.base}`}
                                             className="cursor-pointer"
                                         >
                                             <div className="relative flex mb-1 mt-3 break-words pr-[80px] leading-[32px]">
                                                 <h3 className="inline pr-2">
-                                                    QIP {"<to be assigned>"}: {"<QIP title>"}
+                                                    QIP{' '}
+                                                    {template?.frontmatter
+                                                        ?.qip !== undefined &&
+                                                    template?.frontmatter
+                                                        ?.qip !== null
+                                                        ? template.frontmatter.qip
+                                                              .toString()
+                                                              .padStart(3, '0')
+                                                        : '<to be assigned>'}
+                                                    :{' '}
+                                                    {template?.frontmatter
+                                                        ?.title ||
+                                                        '<QIP title>'}
                                                 </h3>
                                             </div>
                                             <p className="line-clamp-2 break-words text-md font-semibold" />
