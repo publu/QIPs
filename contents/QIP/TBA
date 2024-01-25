@@ -1,0 +1,27 @@
+qip: “To be assigned”
+title: Deploy QiDAO Onto Fraxtal
+network: <Fraxtal>
+status: Draft
+author: <DeFi Dave>
+implementor: Guardians
+implementation-date: Soon after proposal
+proposal: “TBU” for drafts
+created: <date created on, in ISO 8601 (yyyy-mm-dd) format>
+
+## Summary
+This proposal aims to commit resources of QiDAO to deploy its protocol onto Fraxtal, a dedicated modular rollup and blockchain developed by Frax Finance.
+
+## Abstract
+QiDAO will deploy its protocol including its vaults and MAI stablecoin to Fraxtal, allowing users to create CDP vaults on the rollup as well as hold and utilize MAI how they please.
+
+## Motivation
+Frax and QiDAO have been postive-sum partners in DeFi for nearly 2 years cooperating on a number of initiatives to increase liquidity and reduce the cost of capital across chains. As we expand onto Fraxtal, Frax Finance plans to continue our co-incentivization activities with QiDAO to further strengthen our relationship. Frax will fully support the FRAXBP and WETHER programs on Fraxtal, incentivizing voters to allocate their votes towards MAI-related FRAX pools. 
+
+Furthermore, if QiDAO deploys on launch or soon thereafter, then QiDAO Users/LPs/TVL will qualify for additional FXTL points and blockspace incentives reserved for strategic launch partners for Fraxtal.
+
+## Specification
+## Rationale
+This proposal is straightforward, as it proposes QiDAO to deploy onto Fraxtal, which will be decided via the will of the community, and then implemented if passed.
+
+## Technical Specification
+This proposal has no technical specifications other than what is required to deploy on a new chain/rollup.
