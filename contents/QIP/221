@@ -1,0 +1,35 @@
+---
+qip: 220
+title: Deprecate vGHST Collateral
+network: Polygon PoS
+status: Draft
+author: Benjamin.lens
+implementor: Guardians
+implementation-date: TBU
+proposal: TBU
+created: 2024-01-24
+---
+
+### **Summary**
+
+This proposal aims to deprecate all vGHST-backed MAI loans on Polygon PoS given the recently revealed events occurring with the vGHST token contract.
+
+Currently, 32,885 MAI tokens are backed by $108,618 in vGHST globally.
+
+It must be noted that GHST, which is issued by Aavegotchi, is unrelated to this proposal. There are no suggested changes to QiDao’s current support for GHST token vaults.
+
+### **Abstract**
+
+For this proposal to be fully implemented, all existing loans backed by vGHST must be repaid. Since the vault contract for this collateral does not have performance fees or interest rates, deprecation functions are limited to increasing the minimum collateral to debt ratio (min. CDR) until repayment occurs.
+
+### **Motivation**
+
+It was recently uncovered that several months ago, the vGHST token contract was upgraded by certain members of the Gotchi team with the intent to create fake deposits on QiDao’s vaults. While this upgrade was hence patched, vGHST can no longer be trusted as a safe token to back MAI.
+
+### **Rationale**
+
+Deprecating vGHST will safeguard QiDao from future malicious token upgrades.
+
+### **Technical Specification**
+
+[Would be great to get feedback from the community around how fast the deprecation should take place. There is much urgency given the potential actions by Gotchi's team, but vGHST vault owners should be given a chance to repay].
