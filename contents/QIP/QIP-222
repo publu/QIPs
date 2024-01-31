@@ -1,27 +1,44 @@
-qip: “To be assigned”
+qip: 222
 title: Deploy QiDAO Onto Fraxtal
-network: <Fraxtal>
+network: Fraxtal
 status: Draft
-author: <DeFi Dave>
+author: DeFi Dave
 implementor: Guardians
-implementation-date: Soon after proposal
-proposal: “TBU” for drafts
+implementation-date: TBU
+proposal: TBU
 created: <date created on, in ISO 8601 (yyyy-mm-dd) format>
 
-## Summary
-This proposal aims to commit resources of QiDAO to deploy its protocol onto Fraxtal, a dedicated modular rollup and blockchain developed by Frax Finance. The inaugural collaterals to be onboarded are sFRAX and sfrxETH.
+## *Summary*
 
-## Abstract
+This proposal aims to commit resources of QiDao to deploy its protocol onto Fraxtal, a dedicated modular rollup and blockchain developed by Frax Finance. The inaugural collaterals to be onboarded are sFRAX and sfrxETH. sFRAX should be minted via a PSM and sfrxETH via CDPs.
+
+## *Abstract*
+
 QiDAO will deploy its protocol including its vaults and MAI stablecoin to Fraxtal, allowing users to create CDP vaults on the rollup as well as hold and utilize MAI how they please. To start, the first collaterals to be onboarded are sFRAX and sfrxETH.
 
-## Motivation
+## *Motivation*
+
 Frax and QiDAO have been postive-sum partners in DeFi for nearly 2 years cooperating on a number of initiatives to increase liquidity and reduce the cost of capital across chains. As we expand onto Fraxtal, Frax Finance plans to continue our co-incentivization activities with QiDAO to further strengthen our relationship. Frax will fully support the FRAXBP and WETHER programs on Fraxtal, incentivizing voters to allocate their votes towards MAI-related FRAX pools. 
 
-Furthermore, if QiDAO deploys on launch or soon thereafter, then QiDAO Users/LPs/TVL will qualify for additional FXTL points and blockspace incentives reserved for strategic launch partners for Fraxtal.
+Furthermore, if QiDao deploys on launch or soon thereafter, then QiDAO Users/LPs/TVL will qualify for additional FXTL points and blockspace incentives reserved for strategic launch partners for Fraxtal.
 
-## Specification
-## Rationale
+## *Specification*
+
+## *Rationale*
+
 This proposal is straightforward, as it proposes QiDAO to deploy onto Fraxtal, which will be decided via the will of the community, and then implemented if passed.
 
-## Technical Specification
+## *Technical Specification*
+
 For the oracle, Chainlink will be the primary oracle that is used to support the necessary data feeds for the QiDAO protocol. As an alternative, Pyth can be used as well.
+
+### Vault specifications for sfrxETH
+
+* Collateral asset to be used: sfrxETH
+* Minimum collateral to debt ratio:
+* Fees: [repayment fee / interest rate fee / performance fee on asset / minting fee]
+* Minimum debt: [ ] MAI
+* Maximum debt: [ ] MAI
+* Oracle provider:
+* Risk grading: 
+* Risk methodology: [link to rubric template](https://docs.google.com/spreadsheets/d/1uvRFiN5FNr4OUKdsueFbnrQhx1lMdf1FfXRw1tnIXJE/edit?usp=sharing)
