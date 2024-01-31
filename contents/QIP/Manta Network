@@ -1,0 +1,89 @@
+qip: To be assigned
+title: Approve Onboarding $Manta as collateral to mint MAI
+network: Manta Pacific 
+status: <Draft>
+author: Shubham Bhandari
+implementor: Victor Ji  (@victorone111)
+implementation-date: 2024-01-31
+proposal: TBU
+created: 2024-01-31
+---
+
+### Summary
+About Manta Network
+Manta Network is the modular blockchain for zero-knowledge (ZK) applications. Manta Pacific is the modular L2 ecosystem for EVM-native ZK applications and dApps that want to deliver the lowest cost and best experience for users. 
+Leveraging Manta’s Universal Circuits to enable ZK-as-a-Service and Celestia’s data availability for modularity to deliver low gas fees, Manta Pacific offers the perfect environment for ZK-enabled applications.
+Manta Network was created by a team of experienced founders from prestigious institutions, including Harvard, MIT, and Algorand. Manta Network has received investments from many of the top web3 investment funds, including Binance Labs and Polychain Capital. It has grown through participation in the best web3 accelerators, including Alliance DAO and Berkeley Blockchain Xcelerator.
+
+Overview of $MANTA and its Usecases
+The total supply of $MANTA at Genesis: 1,000,000,000.
+2% yearly minting rate starting from Token Genesis.
+
+1. Governance: $MANTA token holders can vote on network governance decisions on Manta Pacific and Manta Atlantic.
+2. Staking: Staking $MANTA contributes to the overall security of Manta Atlantic.
+3. Collator Delegation: $MANTA holders have the option to delegate their holdings with collators or stake $MANTA to run their collators to secure the network.
+4. Network Fees: Manta Atlantic uses $MANTA to pay transaction fees.
+5. Native Liquidity & Collateral: $MANTA token can be used in Manta ecosystem to serve as native liquidity and collateral.
+
+
+### Security
+
+1. A gnosis multisig account has right to mint Manta token
+    https://pacific-explorer.manta.network/address/0x55F9D1007922f3C47AB67A31cE3E503ba6a49b2F?tab=contract
+
+2. We have a bridge for users to bridge between Manta Atlantic and Manta Pacific
+    Manta Pacific <> Manta Atlantic
+      https://app.manta.network/manta/bridge 
+    
+    Manta Pacific <> Ethereum
+      https://pacific-bridge.manta.network 
+    
+    Other third party bridges
+      a. Celer Network
+      b. LayerZero
+      c. Orbiter Finance
+      d. Meson
+      e. Layerswap
+      f. DappOS
+      g. Owlto
+      h. Polyhedra
+      i. Rhino
+      j. minibridge
+      k. hyperlane
+
+
+
+### Vault specifications:
+
+* Collateral asset to be used: $Manta
+* Minimum collateral to debt ratio: 
+* Fees: [repayment fee / interest rate fee / performance fee on asset / minting fee]
+* Minimum debt: [ ] MAI
+* Maximum debt: [ ] MAI
+* Oracle provider: Pyth, Redstone
+* Risk grading: 
+* Risk methodology: [link to rubric template](https://docs.google.com/spreadsheets/d/1uvRFiN5FNr4OUKdsueFbnrQhx1lMdf1FfXRw1tnIXJE/edit?usp=sharing)
+
+### Motivation
+
+On the 18th of January 2024, Manta Network successfully launched its native token, $Manta, on the largest Centralized Exchange (CEX) in the cryptocurrency market. The current Total Value Locked (TVL) of $1.7 billion solidifies Manta's position as the third-largest Layer 2 (L2) protocol in the blockchain space. 
+In a strategic move towards enhancing adoption and fostering diverse use cases within the ecosystem, Manta Network has initiated the onboarding process for $Manta across various applications. 
+The primary objective of this proposal is to establish $Manta as an accepted form of collateral, enabling the issuance of the new MAI Stablecoin. 
+  a. Lending market like LayerBank, Shoebill to use MAI as the assets for users to borrow out
+  b. Start MAI/wUSDM; MAI/Stone trading pairs in the DEXes like Quickswap, Izumi, Aperture and pacificswap
+  c. In the future We can start to talk with IDO platform for them to accept MAI as one of the assets for users to do the IDO as well
+  d. With a total $1.7B assets value on Manta Pacific, $MAI can have a huge potential to achieve a much higher market cap in the whole L1 & L2 industry. There are many high value assets with large liquidity on the Manta Pacific chain like $ETH, $MANTA, $STONE, $wUSDM. 
+  e. Manta Pacific also has a large GameFi ecosystem, there are over 20 GameFi projects live now, and $MAI can be one of the assets that GameFi projects on Manta Pacific accepted in the GameFi projects economics as the payment currency.
+
+This innovative approach allows $Manta holders to acquire MAI tokens by pledging their $Manta holdings, thereby promoting widespread adoption of MAI within the Manta Ecosystem.
+Manta Network is enthusiastic about contributing to the success of this initiative by providing support in marketing efforts and disseminating awareness regarding the token incentives and diverse use cases that accompany this strategic integration.
+
+
+### Quorum Standards
+
+The option with the most votes will be adopted
+
+### Options
+* Approve proposal
+* Further discussions needed
+* Abstain
