@@ -1,39 +1,71 @@
 ---
 qip: 000
-title: General QIP
-network: <CHAIN NAME>
+title: Harmony Vault Repair
+network: <Harmony>
 status: <Draft>
-author: QiDao Protocol
+author: Boomer
 implementor: "[FirstName LastName (@GitHubUsername), FirstName LastName <foo@bar.com>, FirstName (@GitHubUsername), GitHubUsername (@GitHubUsername)]"
-implementation-date: 1970-01-01 # 
+implementation-date: asap
 proposal: https://snapshot.org # Link to the proposal on snapshot.org (optional)
-created: 1970-01-01
+created:2024-15-2
 ---
 
 This is the suggested template for new QIPs. Note that Proposals number will be assigned by an editor. When opening a pull request to submit your Proposal, please use an abbreviated title in the filename, qip-draft_title_abbrev.md. The title should be 44 characters or less
 
 ### Summary
 
-In clear and simple terms, describe the proposal and its intended goal. This should be non-technical and accessible to a casual community member.
+Updating Vault orcales on Harmony to restore operation.
 
 ### Abstract
-
-A short (~200 word) description of the proposed change, the abstract should clearly describe the proposed change. This is what will be done if the QIP is implemented, not why it should be done or how it will be done.
-
+The Chainlink Orcale on the Mai vaults on Harmony needs to be changed to support the Band Orcale price feed. As of now the vaults do not function at all do to Chainlink cutting all price feeds, which has resulted in the users funds being locked inside. A simple switching of the Orcale would solve this problem and allow users to get access to there funds.
+ 
 ### Motivation
-
-Here is where you should describe why the proposal is needed - the problem statement. It is critical that you explain why the change is needed. Please note that the solution description does not go in this section.
-
+Harmony chain has no reliable third party stable and Mai can help users still using the chain have confidence that their funds are safe.  This repair is simple and can be carried out without great time or cost.
+ 
 ### Specification
 
 ### Rationale
 
-The reasoning for the solution above should go here. Why did you propose to implement the change in this way? What were the considerations and trade-offs? The rationale fleshes out what motivated the design and why particular design decisions were made. It should describe alternate designs that were considered and related work. The rationale may also provide evidence of consensus within the community, and should discuss important objections or concerns raised during discussion.
+ The Chainlink oracle is no longer used by harmony they have now partnered with Band for all price feeds, do to this change the MAI vaults are unable to be repaid and the user funds are locked inside and vaults are not visible in the application. By updating the oracle this problem would be resolved and the vaults on harmony would be working properly. This would allow for the chain to be pegged, users to repay vaults and to generate more liquid on chain for greater activity.
 
 ### Technical Specification
 
-The technical specification should outline the changes to the protocol on a technical level.
+Instructions on how to change the oracle from Chainlink  to Band can be found below.
 
 ### Configurable Values
 
-Please list all values configurable under this implementation, if applicable.
+Please list all values configurable under this implementation, if applicable.Band Oracle Test
+Band Reference contract
+    • mainnet : 0xDA7a001b254CD22e46d3eAB04d937489c93174C3
+    • testnet : 0xD0b2234eB9431e850a814bCdcBCB18C1093F986B
+requirements
+    • Foundry
+    • Funded ONE testnet account
+Install foundry
+curl -L https://foundry.paradigm.xyz | bash
+foundryup
+https://docs.harmony.one/home/network/validators/node-setup/hmy-cli-download
+Extract the private key of your account
+if using hmy cli (https://docs.harmony.one/home/network/validators/node-setup/hmy-cli-download)
+PRIVATE_KEY=$(hmy keys export-private-key <ACCOUNT_ADDRESS> --passphrase)
+Deploy the contract
+git clone https://github.com/harmony-one/band_oracle
+cd band_oracle
+
+# install the lib
+forge install foundry-rs/forge-std
+
+# deploy the contract
+forge script script/Bandtest.s.sol:ContractScript --rpc-url https://api.s0.b.hmny.io --private-key $PRIVATE_KEY  --broadcast --legacy
+Copy the contrat address
+CONTRACT_ADDRESS=<contract_address from previous output>
+Test the contract
+cast call $CONTRACT_ADDRESS "demo()" --rpc-url https://api.s0.b.hmny.io
+0x0000000000000000000000000000000000000000000000000de05bc096e9c00000000000000000000000000000000000000000000000000000000000645cc0c400000000000000000000000000000000000000000000000000000000645cc180
+cast call $CONTRACT_ADDRESS "demoBTC()" --rpc-url https://api.s0.b.hmny.io
+0x0000000000000000000000000000000000000000000005cfb0f6a66fc372000000000000000000000000000000000000000000000000000000000000645cc0c400000000000000000000000000000000000000000000000000000000645cc186
+cast call $CONTRACT_ADDRESS "demo_bulk()" --rpc-url https://api.s0.b.hmny.io
+0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000005cf591078e4fd13800000000000000000000000000000000000000000000000000000000000645cbe3800000000000000000000000000000000000000000000000000000000645cc0a800000000000000000000000000000000000000000000000000ebd6f4806fbd2800000000000000000000000000000000000000000000000000000000645cbe3800000000000000000000000000000000000000000000000000000000645cbe38
+Feel free to read https://github.com/bandprotocol/band-std-reference-contracts-solidity for more information.
+
+
