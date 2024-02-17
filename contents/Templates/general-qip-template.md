@@ -1,38 +1,39 @@
 ---
-qip: 000
-title: Harmony Vault Repair
-network: <Harmony>
+sip: <to be assigned>
+title: <QIP title>
+network: <CHAIN NAME>
 status: <Draft>
-author: Boomer
-implementor: "[FirstName LastName (@GitHubUsername), FirstName LastName <foo@bar.com>, FirstName (@GitHubUsername), GitHubUsername (@GitHubUsername)]"
-implementation-date: asap # 
-proposal: https://snapshot.org # Link to the proposal on snapshot.org (optional)
-created: 2-16-2024
+author: <a list of the author's or authors' name(s) and/or username(s), or name(s) and email(s), e.g. (use with the parentheses or triangular brackets): FirstName LastName (@GitHubUsername), FirstName LastName <foo@bar.com>, FirstName (@GitHubUsername) and GitHubUsername (@GitHubUsername)>
+implementor: <a list of the author's or authors' name(s) and/or username(s), or name(s) and email(s), e.g. (use with the parentheses or triangular brackets): FirstName LastName (@GitHubUsername), FirstName LastName <foo@bar.com>, FirstName (@GitHubUsername) and GitHubUsername (@GitHubUsername)>
+implementation-date:
+proposal: <snapshot.org proposal link> (*optional)
+created: <date created on, in ISO 8601 (yyyy-mm-dd) format>
 ---
 
 This is the suggested template for new QIPs. Note that Proposals number will be assigned by an editor. When opening a pull request to submit your Proposal, please use an abbreviated title in the filename, qip-draft_title_abbrev.md. The title should be 44 characters or less
 
 ### Summary
 
-Update Oracle on Harmony to Band Price Feeds
+In clear and simple terms, describe the proposal and its intended goal. This should be non-technical and accessible to a casual community member.
 
 ### Abstract
 
-The Chainlink Oracle currently used on the Mai vaults on Harmony needs to be changed to support the Band Oracle price feed. As of now the vaults do not function at all do to Chainlink cutting all price feeds, which has resulted in the users funds being locked inside. A simple switching of the Oracle would solve this problem and allow users to get access to there funds.
+A short (~200 word) description of the proposed change, the abstract should clearly describe the proposed change. This is what will be done if the QIP is implemented, not why it should be done or how it will be done.
+
 ### Motivation
 
-This repair is simple and can be carried out without great time or cost.
+Here is where you should describe why the proposal is needed - the problem statement. It is critical that you explain why the change is needed. Please note that the solution description does not go in this section.
+
 ### Specification
 
 ### Rationale
 
-The Chainlink oracle is no longer used by harmony they have now partnered with Band for all price feeds, do to this change the MAI vaults are unable to be repaid and the user funds are locked inside and vaults are not visible in the application. By updating the oracle this problem would be resolved and the vaults on harmony would be working properly.
+The reasoning for the solution above should go here. Why did you propose to implement the change in this way? What were the considerations and trade-offs? The rationale fleshes out what motivated the design and why particular design decisions were made. It should describe alternate designs that were considered and related work. The rationale may also provide evidence of consensus within the community, and should discuss important objections or concerns raised during discussion.
+
 ### Technical Specification
 
-See Band Oracle Address below:
+The technical specification should outline the changes to the protocol on a technical level.
 
 ### Configurable Values
 
-Band Reference contract
-    • mainnet : 0xDA7a001b254CD22e46d3eAB04d937489c93174C3
-    • testnet : 0xD0b2234eB9431e850a814bCdcBCB18C1093F986B
+Please list all values configurable under this implementation, if applicable.
