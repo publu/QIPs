@@ -1,13 +1,13 @@
 ---
-sip: <to be assigned>
-title: <QIP title>
+qip: 000
+title: QIP General Template
 network: <CHAIN NAME>
 status: <Draft>
-author: <a list of the author's or authors' name(s) and/or username(s), or name(s) and email(s), e.g. (use with the parentheses or triangular brackets): FirstName LastName (@GitHubUsername), FirstName LastName <foo@bar.com>, FirstName (@GitHubUsername) and GitHubUsername (@GitHubUsername)>
-implementor: <a list of the author's or authors' name(s) and/or username(s), or name(s) and email(s), e.g. (use with the parentheses or triangular brackets): FirstName LastName (@GitHubUsername), FirstName LastName <foo@bar.com>, FirstName (@GitHubUsername) and GitHubUsername (@GitHubUsername)>
-implementation-date:
-proposal: <snapshot.org proposal link> (*optional)
-created: <date created on, in ISO 8601 (yyyy-mm-dd) format>
+author: QiDao Protocol
+implementor: "[FirstName LastName (@GitHubUsername), FirstName LastName <foo@bar.com>, FirstName (@GitHubUsername), GitHubUsername (@GitHubUsername)]"
+implementation-date: 1970-01-01 # 
+proposal: [<snapshot.org proposal link> (*optional)](https://snapshot.org # Link to the proposal on snapshot.org (optional))
+created: 1970-01-01
 ---
 
 This is the suggested template for new QIPs. Note that Proposals number will be assigned by an editor. When opening a pull request to submit your Proposal, please use an abbreviated title in the filename, qip-draft_title_abbrev.md. The title should be 44 characters or less
