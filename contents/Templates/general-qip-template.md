@@ -1,12 +1,12 @@
 ---
 qip: 000
-title: QIP General Template
+title: General template
 network: <CHAIN NAME>
 status: <Draft>
 author: QiDao Protocol
 implementor: "[FirstName LastName (@GitHubUsername), FirstName LastName <foo@bar.com>, FirstName (@GitHubUsername), GitHubUsername (@GitHubUsername)]"
 implementation-date: 1970-01-01 # 
-proposal: [<snapshot.org proposal link> (*optional)](https://snapshot.org # Link to the proposal on snapshot.org (optional))
+proposal: https://snapshot.org # Link to the proposal on snapshot.org (optional)
 created: 1970-01-01
 ---
 
