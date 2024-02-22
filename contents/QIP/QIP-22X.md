@@ -22,9 +22,7 @@ UMA tokens are also used to vote on protocol upgrades and UMA DAO funds allocati
 UMA tokenholders receive inflationary rewards (~30% APR) to stake and participate in governance. Therefore, a large amount of UMA tokens (~25M) are staked and participating in governance decisions via the below voting contract:
 - https://etherscan.io/address/0x004395edb43EFca9885CEdad51EC9fAf93Bd34ac
 
-
 The incentive to stake UMA leads to less liquidity on decentralized exchanges and could impact the token's volatility. The vault specifications have been adjusted accordingly.
-
 
 ### Vault specifications:
 
@@ -40,7 +38,6 @@ The incentive to stake UMA leads to less liquidity on decentralized exchanges an
 
 Adding UMA will enable a pilot program for QiDao to use Oval. Oval enables QiDao to capture MEV created as a result of liquidations. Oval wraps Chainlink price feeds and enables OEV auctions by leveraging Flashbot’s MEV-Share infrastructure. [Here](https://docs.oval.xyz/) are the docs to learn more about Oval.
 
-
 The objective is to use UMA as a pilot program and after 2 months create another proposal that expands Oval to other Ethereum Mainnet assets. This will enable a new source of revenue for QiDao.
 
 ### Quorum Standards
@@ -52,4 +49,3 @@ The option with the most votes will be adopted
 * Approve proposal
 * Further discussions needed
 * Abstain
-
