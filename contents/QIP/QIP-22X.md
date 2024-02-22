@@ -14,7 +14,6 @@ created: tbd
 
 The UMA token provides economic guarantees to protocols using UMA’s Optimistic Oracle (OO). UMA’s community of token holders provide the human component, as voters, for the OO's final resolution on disputes or queries. 
 
-
 UMA tokens are also used to vote on protocol upgrades and UMA DAO funds allocations. The strength of the token will track with the strength and adoption of the UMA ecosystem as a whole. Active and accurate voters earn a healthy yield for their participation.
 
 ### Security
