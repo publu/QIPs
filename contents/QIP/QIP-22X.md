@@ -1,0 +1,36 @@
+---
+qip: 226
+title: Remove Repayment Fees on Base Vaults
+network: Base
+status: Draft
+author: Benjamin.lens
+implementor: Guardians
+implementation-date: immediately after approval
+proposal: TBU
+created: 2024-02-23
+---
+
+### **Summary**
+
+This proposal aims to remove repayment fees on all Base vaults that currently charge them: cbETH and wstETH.
+
+### **Abstract**
+
+Removing repayment fees from these vaults will allow loan-holders to mint and redeem MAI without any penalties.
+
+### **Motivation**
+
+MAI on Base has been slightly depegged for a few weeks. The protocol attempted to fix this depeg by increasing demand to hold the stablecoins. This has not worked. By removing repayment fees, the goal is to contract MAI's supply on Base. 
+
+### **Rationale**
+
+Since short positions were entered when MAI was at peg, loan holders can make a return by repaying when MAI is below peg. Repayment fees are a barrier to this activity as they penalies loan holders that repay.
+
+### **Specification**
+### **Technical Specification**
+
+This proposal recommends the parameter changes outlined in the following section.
+
+### **Configurable Values**
+
+Set closingFee to 0 on cbETH and wstETH vaults
