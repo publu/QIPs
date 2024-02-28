@@ -1,0 +1,50 @@
+---
+qip: 2XX
+title: UMA Oval Pilot Program
+network: Ethereum Mainnet
+status: Draft
+author: UMA Protocol
+implementor: "[Alex Gaines (@abg4)]"
+implementation-date: tbd # Final implementation date TBD
+proposal: https://snapshot.org # Link to the proposal on snapshot.org (optional)
+created: tbd
+---
+
+### Summary
+
+The UMA token provides economic guarantees to protocols using UMA’s Optimistic Oracle (OO). UMA’s community of token holders provide the human component, as voters, for the OO's final resolution on disputes or queries. 
+
+UMA tokens are also used to vote on protocol upgrades and UMA DAO funds allocations. The strength of the token will track with the strength and adoption of the UMA ecosystem as a whole. Active and accurate voters earn a healthy yield for their participation.
+
+### Security
+
+UMA tokenholders receive inflationary rewards (~30% APR) to stake and participate in governance. Therefore, a large amount of UMA tokens (~25M) are staked and participating in governance decisions via the below voting contract:
+- https://etherscan.io/address/0x004395edb43EFca9885CEdad51EC9fAf93Bd34ac
+
+The incentive to stake UMA leads to less liquidity on decentralized exchanges and could impact the token's volatility. The vault specifications have been adjusted accordingly.
+
+### Vault specifications:
+
+* Collateral asset to be used: UMA
+* Minimum collateral to debt ratio: 140%
+* Fees: 8% (Fixed)* Minimum debt: [10,000] MAI
+* Maximum debt: [200,000] MAI
+* Oracle provider: Chainlink via Oval
+* Risk grading: C+
+* Risk methodology: [link to rubric template](https://docs.google.com/spreadsheets/d/1sD6X5E0g0GiE5CnpMUvlN7VOiYICXzUQPq9Ta9hZRXk/edit?usp=sharing)
+
+### Motivation
+
+Adding UMA will enable a pilot program for QiDao to use Oval. Oval enables QiDao to capture MEV created as a result of liquidations. Oval wraps Chainlink price feeds and enables OEV auctions by leveraging Flashbot’s MEV-Share infrastructure. [Here](https://docs.oval.xyz/) are the docs to learn more about Oval.
+
+The objective is to use UMA as a pilot program and after 2 months create another proposal that expands Oval to other Ethereum Mainnet assets. This will enable a new source of revenue for QiDao.
+
+### Quorum Standards
+
+The option with the most votes will be adopted
+
+### Options
+
+* Approve proposal
+* Further discussions needed
+* Abstain
