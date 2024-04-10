@@ -64,11 +64,6 @@ below market value, enhancing its tokenomics.
 - featuring a streamlined OTC exchange process with a 100% Minimum Collateral
 - to Debt Ratio and a 15% value adjustment via an established oracle.
 
-### Governance Token Buyback
-
-- **Supply Reduction**: Strategically aims to diminish the circulating 
-- supply of QiDao's governance tokens, promoting token value appreciation and scarcity.
-
 ### Implementation
 
 - **Communication Strategy**: Deploy effective communication to ensure 
