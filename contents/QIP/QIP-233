@@ -1,0 +1,45 @@
+
+---
+qip: 233
+title: Add ezETH as Collateral for MAI
+network: All chains
+status: Draft
+author: Benjamin.lens
+implementor: QiDao Guardians
+implementation-date: Post-approval
+proposal: TBU
+created: 2024-04-18
+---
+
+### Summary
+
+ezETH is a liquid restaking token that leverages EigenLayer's AVS market to earn extra yield for stakers on top of Ethereum PoS yield. The protocol TVL is currently over $3Bn. ezETH is backed by ETH, wstETH, and wBETH.
+
+### Security
+
+The main security considerations are AVS slashing risk and bridge risk. Slashing has not yet commenced at EigenLayer so this remains an unknown risk. Bridge risk comes from ezETH's exposure to Connext. A total of 5k ezETH can be minted daily by Connext using the xERC standard.
+
+### Vault specifications:
+
+* Collateral asset to be used: ezETH
+* Minimum collateral to debt ratio: 125%
+* Fees: 10% interest rate
+* Minimum debt: 100 MAI
+* Maximum debt: 1M MAI
+* Oracle provider: API3 or Redstone
+* Risk grading: B
+* Risk methodology: https://docs.google.com/spreadsheets/d/1X85z8yMCHcwloKVC6TqO_fWtL2pSlof6ysfaLvyIBTg/edit?usp=sharing
+
+### Motivation
+
+ezETH is an extremely large addressable market for QiDao. There are not many alterantives for ezETH-backed loans on certain L2s, such as Base and Optimsim. This presents a notable opportunity for QiDao to grow its TVL. Additionally, Renzo will commit to 2x Renzo points for users that collateralize MAI loans with ezETH.
+
+### Quorum Standards
+
+The option with the most votes will be adopted
+
+### Options
+
+* Approve proposal
+* Further discussions needed
+* Abstain
