@@ -1,0 +1,44 @@
+---
+qip: 240
+title: Onboard Gauntlet Morpho USDC to QiDao Base PSM
+network: Base
+status: Draft
+author: Benjamin.lens
+implementor: Guardians
+implementation-date: Post approval
+proposal: TBU
+created: 2024-07-26
+
+---
+
+### Summary      
+
+Approve Gauntlet's Morpho USDC vault on Base as collatearl for QiDao's peg stability module (PSM).
+
+### Abstract
+
+The proposed change is to add the following USDC vault as an approved strategy to mint MAI on Base. The mechanics will remain the same as those with the current cUSDC PSM.
+
+Gauntlet USDC: https://app.morpho.org/vault?vault=0xc0c5689e6f4D256E861F65465b691aeEcC0dEb12&network=base
+
+### Motivation
+
+QiDao's current PSM on Base is fully backed by Compound's USDC deposits. The PSM has been very successful, with QiDao accounting for 45% of USDC deposits into Compound. Given this high market share of Compound's market, the DAO should diversify the exposure of its collateral basket to other markets. 
+
+Gauntlet is one of crypto's most known risk management companies, with several years of experience and unmatched distribution channel within DeFi users. Partnering with them on a new PSM collateral will increase QiDao's footprint on Base and the greater DeFi ecosystem. As part of this proposal, the Gauntlet team has agreed to produce content related to this integration, including a writeup on the mechanisms and risks involved.
+
+### Specification
+
+### Rationale
+
+A new PSM is needed to add new collaterals, given that the contract is immutable.
+
+### Technical Specification
+
+If this proposal is approved, a new PSM contract will be deployed, with Gauntlet USDC as an approved strategy.
+
+### Configurable Values
+
+Deposit fee: $0
+Withdraw fee: Greater of $1 or 0.3%
+Withdraw period: 3 days
