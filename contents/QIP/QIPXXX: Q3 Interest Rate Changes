@@ -1,0 +1,64 @@
+---
+qip: XXX  
+title: Q3 Interest Rate Changes  
+network: All Chains  
+status: Draft  
+author: 0xNacho  
+implementor: "Guardians"  
+implementation-date: Post-approval  
+proposal: https://snapshot.org  
+created: 2024-09-21  
+---
+
+### Summary
+
+This proposal aims to adjust the borrowing rates on QiDao’s V2 vaults in response to recent macroeconomic changes during Q3. The DAO is assessing whether to vote on one of the following approaches:
+
+- Minor adjustment: Lowering interest rates by 50 basis points (bps).
+- Moderate adjustment: Lowering interest rates by 150 bps.
+- Significant adjustment: Lowering interest rates by 300 bps.
+- Major adjustment: Following market rates with a cap at 5%, effectively lowering interest rates by half.
+- Maintain Current Rates: Keeping rates unchanged, with the option to reassess later based on further developments.
+
+### Abstract
+
+In light of recent macroeconomic shifts that have led to lower borrowing costs across the market, this proposal suggests adjusting QiDao's interest rates to reflect these trends. The options include a range of adjustments, from minor to major, allowing the DAO to choose the best path forward.  
+Only V2 vaults with configurable interest rate parameters will be affected, while other vaults (e.g., V1 vaults) will remain unaffected.
+
+### Motivation
+
+The shift in borrowing costs across the market, influenced by macroeconomic factors, presents an opportunity for QiDao to adjust its borrowing rates to remain competitive. Aligning interest rates with broader market trends could help maintain and attract borrowers, while ensuring the protocol continues to generate sustainable revenue.  
+However, it’s important to recognize that lower interest rates could lead to more MAI circulating in the market, which could increase the cost of maintaining liquidity on decentralized exchanges (DEXs). This increased cost needs to be balanced against the additional revenue generated from borrowing activity, to ensure that QiDao remains financially sustainable while offering competitive rates.
+
+**Considerations:**
+
+- **Competitiveness:** A rate reduction would help QiDao stay competitive in the context of decreasing borrowing costs across DeFi.
+- **Sustainability:** It's important to balance rate adjustments with the need to maintain protocol revenue.
+- **Liquidity Costs:** More MAI in circulation will increase the cost of maintaining liquidity on DEXs, which needs to be offset by the additional borrowing revenue.
+- **Market Positioning:** Lowering rates too aggressively could lead to revenue losses, while doing nothing may risk losing borrowers to platforms offering lower rates.
+
+### Specification
+
+If rates are adjusted, the interest rate on V2 vaults will be reduced by either 25 bps or 50 bps, based on the DAO consensus.  
+No changes will be made to vaults without adjustable interest rates.
+
+### Rationale
+
+Aligning QiDao’s interest rates with broader macroeconomic shifts will help the protocol remain competitive in the DeFi lending space. However, adjustments must also take into account the sustainability of the protocol and the potential impact on revenue streams. Additionally, any increase in MAI circulation resulting from lower rates must be carefully managed to avoid excessive liquidity costs on DEXs.
+
+### Technical Specification
+
+For V2 vaults, adjust the interest rate parameter based on one of the selected options (50 bps, 150 bps, 300 bps, or following market rates capped at 5%).  
+Vaults without configurable interest rates will remain unchanged.
+
+### Configurable Values
+
+- Lower the interest rate by 50 bps, resulting in a 9.50% borrowing rate.
+- Lower the interest rate by 150 bps, resulting in an 8.50% borrowing rate.
+- Lower the interest rate by 300 bps, resulting in a 7.00% borrowing rate.
+- Follow market rates, with a cap at 5%, effectively lowering rates by half.
+- Maintain current rates, keeping the borrowing rate at 10%.
+
+### Conclusion
+
+This proposal presents five options for adjusting interest rates in response to macroeconomic changes in Q3. The DAO will vote on whether to lower rates by 50, 150, 300 bps, follow market rates capped at 5%, or maintain current rates while monitoring the situation.
