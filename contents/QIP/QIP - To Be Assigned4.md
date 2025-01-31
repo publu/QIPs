@@ -1,5 +1,5 @@
 ---
-sip: <to be assigned>
+Qip: <to be assigned>
 title: <Strengthen MAI's Peg & Increase QiDAO Protocol Revenue with Treasury owned QI-MAI LPs>
 network: <ETH>
 status: <Draft>
