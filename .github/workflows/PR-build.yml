@@ -9,11 +9,37 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-      - name: Get latest npm version
-        run: npm install -g npm@latest
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18.x
       - name: Install dependencies
         run: npm install --prefer-offline --no-audit
-      - name: Validate QIP frontmatters
-        run: npm test
+      - name: Get changed QIP files
+        id: changed_qips
+        run: |
+          BASE_SHA=${{ github.event.pull_request.base.sha }}
+          HEAD_SHA=${{ github.sha }}
+          echo "Comparing $BASE_SHA → $HEAD_SHA for contents/QIP/"
+          # get the list
+          CHANGED=$(git diff --name-only $BASE_SHA $HEAD_SHA -- contents/QIP/)
+
+          # write it to disk (in case you still want to inspect it)
+          echo "$CHANGED" > changed_qips.txt
+          echo "Wrote $(wc -l < changed_qips.txt) entries to changed_qips.txt"
+
+          # now export it as a step output for the `if:` condition
+          echo "files<<EOF" >> $GITHUB_OUTPUT
+          echo "$CHANGED"       >> $GITHUB_OUTPUT
+          echo "EOF"           >> $GITHUB_OUTPUT
+      - uses: oven-sh/setup-bun@v2
+      - name: Validate new/changed QIPs
+        if: ${{ steps.changed_qips.outputs.files != '' }}
+        run: |
+          if [ -s changed_qips.txt ]; then
+            bun scripts/validate-qip.ts $(cat changed_qips.txt)
+          else
+            echo "No QIP files changed. Skipping validation."
+          fi
