@@ -1,4 +1,4 @@
-name: QiDao PR build
+name: QIP File Validation
 
 on:
   pull_request:
@@ -7,6 +7,7 @@ on:
 
 jobs:
   build:
+    name: Validate new/changed QIPs
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
