@@ -41,7 +41,11 @@ jobs:
           BASE_SHA=${{ github.event.pull_request.base.sha }}
           HEAD_SHA=${{ github.sha }}
           echo "Checking for non-QIP or non-.md file changes between $BASE_SHA and $HEAD_SHA"
-          NON_QIP=$(git diff --name-only $BASE_SHA $HEAD_SHA | grep -vE '^contents/QIP/[^/]+\\.md$' || true)
+          CHANGED_FILES=$(git diff --name-only $BASE_SHA $HEAD_SHA)
+          echo "Changed files:" >&2
+          echo "$CHANGED_FILES" >&2
+          # Filter out allowed .md files in contents/QIP, ignore empty lines
+          NON_QIP=$(echo "$CHANGED_FILES" | grep -vE '^contents/QIP/[^/]+\.md$' | grep -vE '^$' || true)
           if [ -n "$NON_QIP" ]; then
             echo "Error: The following files are not allowed in this PR:" >&2
             echo "$NON_QIP" >&2
