@@ -13,11 +13,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 18.x
-      - name: Install dependencies
-        run: npm install --prefer-offline --no-audit
+      - uses: oven-sh/setup-bun@v2
       - name: Get changed QIP files
         id: changed_qips
         run: |
