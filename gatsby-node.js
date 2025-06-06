@@ -70,6 +70,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     const { createTypes } = actions;
     const typeDefs = `
     type MarkdownRemarkFrontmatter {
+        qip: Int
         title: String!
         shortDescription: String
         network: String
