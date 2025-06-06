@@ -7,17 +7,13 @@ interface Props {
     children: React.ReactNode;
 }
 
-const toggleTheme = (e) => {
-    e.preventDefault();
-    const element = document.body;
-    document
-        .getElementById('theme-toggle-dark-icon')
-        ?.classList.toggle('hidden');
-    document
-        .getElementById('theme-toggle-light-icon')
-        ?.classList.toggle('hidden');
-    const result = element.classList.toggle('dark');
-    localStorage.setItem('theme', result ? 'dark' : 'light');
+const toggleTheme = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  e.preventDefault();
+  const element = document.body;
+  document.getElementById("theme-toggle-dark-icon")?.classList.toggle("hidden");
+  document.getElementById("theme-toggle-light-icon")?.classList.toggle("hidden");
+  const result = element.classList.toggle("dark");
+  localStorage.setItem("theme", result ? "dark" : "light");
 };
 
 const initTheme = () => {
