@@ -7,6 +7,8 @@ import { useState } from "react";
 import { useEthersSigner } from "../../utils/ethers";
 import { createProposal } from "../../utils/snapshot-client";
 import { Proposal } from "@snapshot-labs/snapshot.js/dist/src/sign/types";
+import { ethers } from "ethers";
+import { useQuery } from "@tanstack/react-query";
 
 interface Props {
   frontmatter__qip: number;
@@ -31,6 +33,41 @@ const Template: React.FC<Props> = ({ data }) => {
     tmp.innerHTML = html;
     return tmp.textContent || tmp.innerText || "";
   };
+
+  // ERC20 token contract details
+  const TOKEN_CONTRACT_ADDRESS = "0x1bffabc6dfcafb4177046db6686e3f135e8bc732";
+  const REQUIRED_BALANCE = 150000; // 150k tokens
+
+  // Minimal ERC20 ABI for balance checking
+  const ERC20_ABI = ["function balanceOf(address owner) view returns (uint256)", "function decimals() view returns (uint8)"];
+
+  // Query function for fetching token balance
+  const fetchTokenBalance = async () => {
+    if (!signer) {
+      return 0;
+    }
+
+    const tokenContract = new ethers.Contract(TOKEN_CONTRACT_ADDRESS, ERC20_ABI, signer);
+    const address = await signer.getAddress();
+    const [balance, decimals] = await Promise.all([tokenContract.balanceOf(address), tokenContract.decimals()]);
+
+    // Convert balance to number with proper decimal handling
+    const balanceInTokens = Number(ethers.utils.formatUnits(balance, decimals));
+    return balanceInTokens;
+  };
+
+  // Use react-query to fetch and cache token balance
+  const {
+    data: tokenBalance = 0,
+    isLoading: checkingBalance,
+    error: balanceError,
+  } = useQuery({
+    queryKey: ["tokenBalance", TOKEN_CONTRACT_ADDRESS, signer ? "connected" : "disconnected"],
+    queryFn: fetchTokenBalance,
+    enabled: !!signer,
+    staleTime: 30000, // Consider data stale after 30 seconds
+    refetchInterval: 60000, // Refetch every minute
+  });
 
   // Example values for proposal; adjust fields per your space/schema
   const proposalOptions: Proposal = {
@@ -83,10 +120,29 @@ const Template: React.FC<Props> = ({ data }) => {
               </div>
               {/* Add Snapshot Proposal Button */}
               <div className="mt-6 flex flex-col items-center">
-                <button className="px-4 py-2 bg-blue-600 text-white rounded" onClick={handleSubmit} disabled={loading}>
-                  {loading ? "Submitting..." : "Submit to Snapshot"}
+                <button
+                  className={`px-4 py-2 rounded transition-colors ${
+                    !signer || tokenBalance < REQUIRED_BALANCE || loading || checkingBalance
+                      ? "bg-gray-400 cursor-not-allowed"
+                      : "bg-blue-600 hover:bg-blue-700"
+                  } text-white`}
+                  onClick={handleSubmit}
+                  disabled={!signer || tokenBalance < REQUIRED_BALANCE || loading || checkingBalance}
+                >
+                  {loading
+                    ? "Submitting..."
+                    : checkingBalance
+                    ? "Checking balance..."
+                    : !signer
+                    ? "Connect Wallet"
+                    : tokenBalance < REQUIRED_BALANCE
+                    ? `Insufficient Balance (${tokenBalance.toLocaleString()} / ${REQUIRED_BALANCE.toLocaleString()} required)`
+                    : "Submit to Snapshot"}
                 </button>
                 {status && <p className="mt-2 text-sm">{status}</p>}
+                {signer && tokenBalance >= REQUIRED_BALANCE && (
+                  <p className="mt-1 text-xs text-gray-600">Token balance: {tokenBalance.toLocaleString()} (✓ meets requirement)</p>
+                )}
               </div>
             </div>
           </div>
