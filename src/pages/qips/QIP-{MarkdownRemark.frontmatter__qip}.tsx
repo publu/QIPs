@@ -25,7 +25,7 @@ const Template: React.FC<Props> = ({ data }) => {
 
   // Local state for confirmation / feedback
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState<string | null>(null);
+  const [status, setStatus] = useState<React.ReactNode>(null);
 
   // Helper function to strip HTML tags and convert to plain text
   const stripHtml = (html: string) => {
@@ -76,8 +76,8 @@ const Template: React.FC<Props> = ({ data }) => {
     title: frontmatter.title,
     body: `QIP #${frontmatter.qip}: ${frontmatter.title}\n\n${stripHtml(html)}`,
     choices: ["Yes", "No", "Abstain"],
-    start: Math.floor(Date.now() / 1000),
-    end: Math.floor(Date.now() / 1000) + 86400, // 24h window
+    start: Math.floor(Date.now() / 1000) + 3600, // Start in 1 hour (voting delay)
+    end: Math.floor(Date.now() / 1000) + 3600 + 86400, // End 24h after start
     snapshot: 0, // will auto-fetch if zero
     discussion: "",
     plugins: "",
@@ -97,9 +97,66 @@ const Template: React.FC<Props> = ({ data }) => {
         "https://hub.snapshot.org", // or your custom hub endpoint
         proposalOptions
       );
-      setStatus(`Proposal created: ${(receipt as any).txHash}`);
+
+      // Handle successful response from Snapshot
+      if (receipt && (receipt as any).id) {
+        const proposalId = (receipt as any).id;
+        const proposalUrl = `https://snapshot.box/#/s:${proposalOptions.space}/proposal/${proposalId}`;
+
+        setStatus(
+          <span>
+            Proposal created successfully!
+            <a href={proposalUrl} target="_blank" rel="noopener noreferrer" className="ml-2 underline hover:no-underline">
+              View proposal →
+            </a>
+          </span>
+        );
+      } else {
+        // Fallback if response format is unexpected
+        setStatus(`Proposal created: ${JSON.stringify(receipt)}`);
+      }
     } catch (e: any) {
-      setStatus(`Error: ${e.message || e}`);
+      // Improved error handling
+      console.error("Snapshot submission error:", e);
+
+      // Handle Snapshot-specific error format
+      if (e.error && e.error_description) {
+        // Snapshot API errors
+        const errorType = e.error;
+        const errorDesc = e.error_description;
+
+        // Map common Snapshot errors to user-friendly messages
+        if (errorDesc.includes("voting delay")) {
+          setStatus("Error: Invalid voting delay. Proposals must have a delay period before voting starts.");
+        } else if (errorDesc.includes("voting period")) {
+          setStatus("Error: Invalid voting period. Check the proposal duration settings.");
+        } else if (errorDesc.includes("already exists")) {
+          setStatus("Error: A proposal with this content already exists.");
+        } else if (errorDesc.includes("space not found")) {
+          setStatus("Error: Snapshot space not found. Check the space name.");
+        } else if (errorDesc.includes("not authorized")) {
+          setStatus("Error: You are not authorized to create proposals in this space.");
+        } else if (errorDesc.includes("start date")) {
+          setStatus("Error: Invalid start date. Proposal must start in the future.");
+        } else if (errorDesc.includes("end date")) {
+          setStatus("Error: Invalid end date. End date must be after start date.");
+        } else {
+          // Show the actual error description from Snapshot
+          setStatus(`Error: ${errorDesc}`);
+        }
+      } else if (e.code === "ACTION_REJECTED" || e.code === 4001) {
+        // User rejected the transaction
+        setStatus("Transaction cancelled by user");
+      } else if (e.message?.includes("network") || e.message?.includes("fetch")) {
+        // Network/HTTP errors
+        setStatus("Network error: Please check your connection and try again");
+      } else if (e.message?.includes("gas")) {
+        // Gas-related errors
+        setStatus("Transaction failed: Insufficient gas or gas price too low");
+      } else {
+        // Generic error fallback
+        setStatus(`Error: ${e.message || e.error_description || "Failed to create proposal. Please try again."}`);
+      }
     } finally {
       setLoading(false);
     }
@@ -118,7 +175,18 @@ const Template: React.FC<Props> = ({ data }) => {
 
               {/* Move submission button to the top */}
               <div className="mb-6 flex flex-col items-center">
-                {status && <p className="mt-2 text-sm">{status}</p>}
+                {status && (
+                  <p
+                    className={`mt-2 text-sm ${
+                      typeof status === "string" &&
+                      (status.includes("Error") || status.includes("error") || status.includes("failed") || status.includes("cancelled"))
+                        ? "text-red-600 font-medium"
+                        : "text-green-600 font-medium"
+                    }`}
+                  >
+                    {status}
+                  </p>
+                )}
                 {signer && tokenBalance >= REQUIRED_BALANCE && (
                   <p className="mt-1 text-xs text-gray-600">Token balance: {tokenBalance.toLocaleString()} (✓ meets requirement)</p>
                 )}
@@ -153,6 +221,20 @@ const Template: React.FC<Props> = ({ data }) => {
                     ? `Insufficient Balance (${tokenBalance.toLocaleString()} / ${REQUIRED_BALANCE.toLocaleString()} required)`
                     : "Submit to Snapshot"}
                 </button>
+
+                {/* Status display near submit button */}
+                {status && (
+                  <p
+                    className={`text-center text-sm ${
+                      typeof status === "string" &&
+                      (status.includes("Error") || status.includes("error") || status.includes("failed") || status.includes("cancelled"))
+                        ? "text-red-600 font-medium"
+                        : "text-green-600 font-medium"
+                    }`}
+                  >
+                    {status}
+                  </p>
+                )}
               </div>
             </div>
           </div>
