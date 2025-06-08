@@ -111,6 +111,19 @@ const Template: React.FC<Props> = ({ data }) => {
         <div className="content mt-30 overflow-y-auto h-screen flex justify-center items-start">
           <div id="content-center" className="relative w-full pl-0 lg:w-3/4 lg:pl-5 mt-20">
             <div className="">
+              {/* Add large title at the top */}
+              <h1 className="text-3xl md:text-4xl font-bold text-center mb-6 pt-10">
+                QIP-{frontmatter.qip}: {frontmatter.title}
+              </h1>
+
+              {/* Move submission button to the top */}
+              <div className="mb-6 flex flex-col items-center">
+                {status && <p className="mt-2 text-sm">{status}</p>}
+                {signer && tokenBalance >= REQUIRED_BALANCE && (
+                  <p className="mt-1 text-xs text-gray-600">Token balance: {tokenBalance.toLocaleString()} (✓ meets requirement)</p>
+                )}
+              </div>
+
               <div className="flex justify-center sm:m-0 m-3">
                 <FrontmatterTable frontmatter={frontmatter} />
               </div>
@@ -118,10 +131,11 @@ const Template: React.FC<Props> = ({ data }) => {
               <div className="markdown-content mt-3 p-3 md:p-none">
                 <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: html }} />
               </div>
-              {/* Add Snapshot Proposal Button */}
-              <div className="mt-6 flex flex-col items-center">
+              <div className="flex flex-col w-full gap-y-3 items-left pb-10">
+                <span className="text-2xl font-bold text-black">Submit to Snapshot</span>
+
                 <button
-                  className={`px-4 py-2 rounded transition-colors ${
+                  className={`m-auto w-fit px-6 py-3 rounded-lg font-medium transition-colors ${
                     !signer || tokenBalance < REQUIRED_BALANCE || loading || checkingBalance
                       ? "bg-gray-400 cursor-not-allowed"
                       : "bg-blue-600 hover:bg-blue-700"
@@ -139,10 +153,6 @@ const Template: React.FC<Props> = ({ data }) => {
                     ? `Insufficient Balance (${tokenBalance.toLocaleString()} / ${REQUIRED_BALANCE.toLocaleString()} required)`
                     : "Submit to Snapshot"}
                 </button>
-                {status && <p className="mt-2 text-sm">{status}</p>}
-                {signer && tokenBalance >= REQUIRED_BALANCE && (
-                  <p className="mt-1 text-xs text-gray-600">Token balance: {tokenBalance.toLocaleString()} (✓ meets requirement)</p>
-                )}
               </div>
             </div>
           </div>
