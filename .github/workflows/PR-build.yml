@@ -57,4 +57,3 @@ jobs:
           else
             echo "No QIP files changed. Skipping validation."
           fi
-
