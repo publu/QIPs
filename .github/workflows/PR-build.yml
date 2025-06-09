@@ -1,4 +1,4 @@
-name: QiDao PR build
+name: QIP File Validation
 
 on:
   pull_request:
@@ -7,16 +7,13 @@ on:
 
 jobs:
   build:
+    name: Validate new/changed QIPs
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 18.x
-      - name: Install dependencies
-        run: npm install --prefer-offline --no-audit
+      - uses: oven-sh/setup-bun@v2
       - name: Get changed QIP files
         id: changed_qips
         run: |
@@ -35,6 +32,23 @@ jobs:
           echo "$CHANGED"       >> $GITHUB_OUTPUT
           echo "EOF"           >> $GITHUB_OUTPUT
       - uses: oven-sh/setup-bun@v2
+      - name: Check only QIP .md files changed
+        run: |
+          BASE_SHA=${{ github.event.pull_request.base.sha }}
+          HEAD_SHA=${{ github.sha }}
+          echo "Checking for non-QIP or non-.md file changes between $BASE_SHA and $HEAD_SHA"
+          CHANGED_FILES=$(git diff --name-only $BASE_SHA $HEAD_SHA)
+          echo "Changed files:" >&2
+          echo "$CHANGED_FILES" >&2
+          # Filter out allowed .md files in contents/QIP, ignore empty lines
+          NON_QIP=$(echo "$CHANGED_FILES" | grep -vE '^contents/QIP/[^/]+\.md$' | grep -vE '^$' || true)
+          if [ -n "$NON_QIP" ]; then
+            echo "Error: The following files are not allowed in this PR:" >&2
+            echo "$NON_QIP" >&2
+            exit 1
+          else
+            echo "All changed files are .md files in contents/QIP."
+          fi
       - name: Validate new/changed QIPs
         if: ${{ steps.changed_qips.outputs.files != '' }}
         run: |
