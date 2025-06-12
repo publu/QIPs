@@ -45,9 +45,6 @@
   "overrides": {
     "@parcel/watcher": "2.1.0"
   },
-  "overrides": {
-    "@parcel/watcher": "2.1.0"
-  },
   "devDependencies": {
     "@types/node": "^20.3.3",
     "@types/react": "^18.2.14",
