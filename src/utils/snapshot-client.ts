@@ -32,3 +32,49 @@ export async function createProposal(signer: Signer, hub: string, options: Propo
   const receipt = await client.proposal(signer.provider as providers.Web3Provider, await signer.getAddress(), proposal);
   return receipt;
 }
+
+export async function getProposals(space: string) {
+  const query = `query Proposals {
+      proposals(
+        first: 100
+        skip: 0
+        where: {
+          space_in: ["${space}"]
+        }
+        orderBy: "created"
+        orderDirection: desc
+      ) {
+        id
+        title
+      }
+    }
+  `;
+  const url = "https://hub.snapshot.org/graphql";
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query: query,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log("response", data);
+
+    if (data.errors) {
+      throw new Error(`GraphQL error: ${JSON.stringify(data.errors)}`);
+    }
+
+    return data.data.proposals;
+  } catch (error) {
+    console.error("Error fetching proposals:", error);
+    return [];
+  }
+}
