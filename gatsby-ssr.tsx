@@ -1,28 +1,19 @@
 import "./src/styles/global.css";
 
 import React from "react";
-import { WagmiProvider, createConfig } from "wagmi";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { mainnet } from "wagmi/chains";
-import { http } from "wagmi";
-import { ConnectKitProvider, getDefaultConfig } from "connectkit";
 
-const config = createConfig(
-  getDefaultConfig({
-    appName: "Qidao",
-    walletConnectProjectId: process.env.GATSBY_WALLETCONNECT_PROJECT_ID!,
-    chains: [mainnet],
-    transports: {
-      [mainnet.id]: http(),
-    },
-  })
-);
-const queryClient = new QueryClient();
+// Mock provider component that does nothing but maintains the component tree
+const MockProvider = ({ children }) => <>{children}</>;
 
-export const wrapRootElement = ({ element }) => (
-  <WagmiProvider config={config}>
-    <QueryClientProvider client={queryClient}>
-      <ConnectKitProvider>{element}</ConnectKitProvider>
-    </QueryClientProvider>
-  </WagmiProvider>
-);
+// During SSR, we provide mock providers to maintain component structure
+export const wrapRootElement = ({ element }) => {
+  // During SSR, the null-loaded modules will be undefined
+  // We'll provide mock providers that just pass through children
+  return (
+    <MockProvider>
+      <MockProvider>
+        <MockProvider>{element}</MockProvider>
+      </MockProvider>
+    </MockProvider>
+  );
+};

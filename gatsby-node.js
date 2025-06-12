@@ -87,3 +87,18 @@ exports.createSchemaCustomization = ({ actions }) => {
     `;
     createTypes(typeDefs);
 };
+
+exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
+    if (stage === "build-html" || stage === "develop-ssr") {
+      actions.setWebpackConfig({
+        module: {
+          rules: [
+            {
+              test: /@coinbase\/wallet-sdk|@safe-global\/safe-gateway-typescript-sdk|@reown\/appkit-ui|@reown\/appkit-scaffold-ui|@reown\/appkit|viem|jsonrpc-ws-connection|@safe-global\/safe-apps-sdk|wagmi|connectkit|family/,
+              use: loaders.null(),
+            },
+          ],
+        },
+      })
+    }
+  }
