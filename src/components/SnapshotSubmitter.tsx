@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useEthersSigner } from "../utils/ethers";
-import { createProposal } from "../utils/snapshot-client";
+import { createProposal, getProposals } from "../utils/snapshot-client";
 import { Proposal } from "@snapshot-labs/snapshot.js/dist/src/sign/types";
 import { ethers } from "ethers";
 import { useQuery } from "@tanstack/react-query";
@@ -14,6 +14,7 @@ const SnapshotSubmitter: React.FC<SnapshotSubmitterProps> = ({ frontmatter, html
   const signer = useEthersSigner();
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState<React.ReactNode>(null);
+  const [highestQip, setHighestQip] = useState<number | null>(null);
 
   const stripHtml = (html: string) => {
     if (typeof window === "undefined") return "";
@@ -21,6 +22,22 @@ const SnapshotSubmitter: React.FC<SnapshotSubmitterProps> = ({ frontmatter, html
     tmp.innerHTML = html;
     return tmp.textContent || tmp.innerText || "";
   };
+
+  const { data: proposals, isLoading: loadingProposals } = useQuery({
+    queryKey: ["proposals", "qidao.eth"],
+    queryFn: () => getProposals("qidao.eth"),
+  });
+
+  useEffect(() => {
+    if (proposals) {
+      const qipNumbers = proposals.map((p: any) => {
+        const match = p.title.match(/QIP(\d+)/i);
+        return match ? parseInt(match[1], 10) : 0;
+      });
+      console.log("qipNumbers", qipNumbers);
+      setHighestQip(Math.max(0, ...qipNumbers));
+    }
+  }, [proposals]);
 
   const TOKEN_CONTRACT_ADDRESS = "0x1bffabc6dfcafb4177046db6686e3f135e8bc732";
   const REQUIRED_BALANCE = 150000;
@@ -42,6 +59,8 @@ const SnapshotSubmitter: React.FC<SnapshotSubmitterProps> = ({ frontmatter, html
     refetchInterval: 60000,
   });
 
+  const isQipValid = highestQip !== null && frontmatter.qip === highestQip + 1;
+
   const proposalOptions: Proposal = {
     space: "qidao.eth",
     type: "single-choice",
@@ -58,6 +77,10 @@ const SnapshotSubmitter: React.FC<SnapshotSubmitterProps> = ({ frontmatter, html
   const handleSubmit = async () => {
     if (!signer) {
       setStatus("Please connect your wallet first.");
+      return;
+    }
+    if (!isQipValid) {
+      setStatus(`Error: Invalid QIP number. The next QIP should be #${highestQip === null ? "..." : highestQip + 1}.`);
       return;
     }
     setLoading(true);
@@ -114,19 +137,21 @@ const SnapshotSubmitter: React.FC<SnapshotSubmitterProps> = ({ frontmatter, html
       <div className="flex justify-center sm:m-0 m-3">
         <button
           className={`m-auto w-fit px-6 py-3 rounded-lg font-medium transition-colors ${
-            !signer || tokenBalance < REQUIRED_BALANCE || loading || checkingBalance
+            !signer || tokenBalance < REQUIRED_BALANCE || loading || checkingBalance || !isQipValid || loadingProposals
               ? "bg-gray-400 cursor-not-allowed"
               : "bg-blue-600 hover:bg-blue-700"
           } text-white`}
           onClick={handleSubmit}
-          disabled={!signer || tokenBalance < REQUIRED_BALANCE || loading || checkingBalance}
+          disabled={!signer || tokenBalance < REQUIRED_BALANCE || loading || checkingBalance || !isQipValid || loadingProposals}
         >
           {loading
             ? "Submitting..."
-            : checkingBalance
-            ? "Checking balance..."
+            : checkingBalance || loadingProposals
+            ? "Checking prerequisites..."
             : !signer
             ? "Connect Wallet"
+            : !isQipValid
+            ? `Invalid QIP Number (currently ${frontmatter.qip}, next is ${highestQip === null ? "..." : highestQip + 1})`
             : tokenBalance < REQUIRED_BALANCE
             ? `Insufficient Balance (${tokenBalance.toLocaleString()} / ${REQUIRED_BALANCE.toLocaleString()} required)`
             : "Submit to Snapshot"}
