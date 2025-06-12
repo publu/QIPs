@@ -3,7 +3,7 @@
 /// <reference types="node" />
 
 import { readFileSync } from "fs";
-import { join } from "path";
+import { join, isAbsolute } from "path";
 
 // Helper to parse YAML frontmatter (reusing from validate-qip.ts)
 function parseFrontmatter(content: string) {
@@ -24,6 +24,14 @@ function parseFrontmatter(content: string) {
     obj[key] = value;
   }
   return obj;
+}
+
+// Parse comma-separated author list
+function parseAuthors(authorField: string): string[] {
+  return authorField
+    .split(",")
+    .map((author) => author.trim())
+    .filter((author) => author.length > 0);
 }
 
 // Get the original author from git history
@@ -66,7 +74,7 @@ let hasError = false;
 console.log(`Validating that PR author '${prAuthor}' can modify QIP files...`);
 
 for (const file of files) {
-  const filePath = join(process.cwd(), file);
+  const filePath = isAbsolute(file) ? file : join(process.cwd(), file);
 
   try {
     // Read current file content to get QIP author
@@ -79,19 +87,39 @@ for (const file of files) {
       continue;
     }
 
-    const qipAuthor = frontmatter.author;
-    console.log(`${file}: QIP author is '${qipAuthor}'`);
+    // Parse authors from frontmatter (comma-separated)
+    const qipAuthors = parseAuthors(frontmatter.author);
+    console.log(`${file}: QIP authors are '${qipAuthors.join(", ")}'`);
 
-    // Get original author from git history as fallback
+    // Build list of authorized users
+    const authorizedUsers = new Set<string>();
+
+    // Add all QIP authors
+    qipAuthors.forEach((author) => authorizedUsers.add(author));
+
+    // Add proposed-by user if exists
+    if (frontmatter["proposed-by"]) {
+      const proposedBy = frontmatter["proposed-by"].trim();
+      console.log(`${file}: Proposed by '${proposedBy}'`);
+      authorizedUsers.add(proposedBy);
+    }
+
+    // Get original author from git history as additional context
     const originalAuthor = getOriginalAuthor(file);
     console.log(`${file}: Original git author is '${originalAuthor}'`);
 
-    // Check if PR author matches QIP author
-    const isOriginalAuthorMatch = originalAuthor && originalAuthor === prAuthor;
+    // Add original author as authorized user if available
+    if (originalAuthor) {
+      authorizedUsers.add(originalAuthor);
+      console.log(`${file}: Adding original author '${originalAuthor}' to authorized users`);
+    }
 
-    if (!isOriginalAuthorMatch) {
+    // Check if PR author is authorized
+    const isAuthorized = authorizedUsers.has(prAuthor);
+
+    if (!isAuthorized) {
       console.error(
-        `${file}: PR author '${prAuthor}' is not authorized to modify this QIP. QIP author: '${qipAuthor}', Original author: '${originalAuthor}'`
+        `${file}: PR author '${prAuthor}' is not authorized to modify this QIP. Authorized users: ${Array.from(authorizedUsers).join(", ")}`
       );
       hasError = true;
     } else {
@@ -104,10 +132,13 @@ for (const file of files) {
 }
 
 if (hasError) {
-  console.error("\n❌ Author validation failed. Only the original author can modify their QIP files.");
-  console.error("If you need to make changes to someone else's QIP, please:");
-  console.error("1. Contact the original author to make the changes");
-  console.error("2. Update the author mapping in scripts/validate-author.ts if usernames don't match");
+  console.error("\n❌ Author validation failed. Only authorized users can modify QIP files.");
+  console.error("Authorized users include:");
+  console.error("- Any author listed in the 'author' field (comma-separated)");
+  console.error("- The user listed in the 'proposed-by' field (if present)");
+  console.error("\nIf you need to make changes to someone else's QIP, please:");
+  console.error("1. Contact one of the authorized authors to make the changes");
+  console.error("2. Have them add you as a co-author or set you as 'proposed-by'");
   process.exit(1);
 } else {
   console.log("\n✅ All QIP author validations passed.");
