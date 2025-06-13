@@ -37,9 +37,7 @@ const AllProposals: React.FC<Props> = ({
                         <div className="mb-16"></div>
 
                         {columns.map((column: any) => {
-                            const proposals = sortBy('frontmatter.qip')(
-                                column.nodes
-                            );
+                            const proposals = sortBy("frontmatter.qip", column.nodes).reverse();
                             return (
                                 <div
                                     key={column.fieldValue}
