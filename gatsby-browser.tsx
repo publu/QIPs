@@ -11,6 +11,7 @@ import { ConnectKitProvider, getDefaultConfig } from "connectkit";
 const config = createConfig(
   getDefaultConfig({
     appName: "Qidao",
+    enableFamily: false,
     walletConnectProjectId: process.env.GATSBY_WALLETCONNECT_PROJECT_ID!,
     chains: [mainnet],
     transports: {
